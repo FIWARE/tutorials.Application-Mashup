@@ -1,0 +1,151 @@
+version: '3.5' 
+
+services:
+
+    postgres-db:
+        image: postgres
+        hostname: postgres-db
+        container_name: db-postgres
+        restart: always
+        ports:
+          - "5432:5432"
+        networks:
+          default:
+            ipv4_address: 172.18.1.13
+        environment:
+            - POSTGRES_PASSWORD=wirepass   # Change this password!
+        volumes:
+            - postgres-db:/var/lib/postgresql/data
+
+
+
+    elasticsearch:
+        image: elasticsearch:2.4
+        container_name: elasticsearch
+        hostname: elasticsearch
+        ports:
+            - "9200:9200"
+        networks:
+          default:
+            ipv4_address: 172.18.1.12
+
+        restart: always
+        volumes:
+            - elasticsearch-data:/usr/share/elasticsearch/data
+        command: elasticsearch -Des.index.max_result_window=50000
+
+    memcached:
+        image: memcached:1
+        container_name: memcached
+        hostname: memcached
+        ports:
+            - "11211:11211"
+        networks:
+          default:
+            ipv4_address: 172.18.1.11
+
+        restart: always
+        command: memcached -m 2048m
+
+    wirecloud:
+        image: wirecloudx
+        container_name: fiware-wirecloud
+        hostname: wirecloud
+        ports:
+            - "8000:8000"
+        networks:
+          default:
+            ipv4_address: 172.18.1.10
+
+        restart: always
+        depends_on:
+            - keyrock
+            - elasticsearch
+            - memcached
+            - postgres-db
+        environment:
+            - DEBUG=True
+            - DEFAULT_THEME=wirecloud.defaulttheme
+            - DB_HOST=postgres-db
+            - DB_PASSWORD=wirepass   # Change this password!
+            - FORWARDED_ALLOW_IPS=*
+            - ELASTICSEARCH2_URL=http://elasticsearch:9200/
+            - MEMCACHED_LOCATION=memcached:11211
+            - FIWARE_IDM_URL=http://localhost:3005
+            - FIWARE_IDM_SERVER=http://172.18.1.5:3005
+            - SOCIAL_AUTH_FIWARE_KEY=wirecloud-dckr-site-0000-00000000000
+            - SOCIAL_AUTH_FIWARE_SECRET=wirecloud-docker-000000-clientsecret
+        volumes:
+            - wirecloud-data:/opt/wirecloud_instance/data
+            - wirecloud-static:/var/www/static
+            - ./wirecloud-data/common-widgets:/opt/common-widgets
+    
+
+    keyrock:
+        image: fiware/idm:7.5.1
+        container_name: fiware-keyrock
+        hostname: keyrock
+        networks:
+          default:
+            ipv4_address: 172.18.1.5
+        depends_on:
+            - mysql-db
+        ports:
+            - "3005:3005"
+            - "3443:3443"
+        environment:
+            - DEBUG=idm:*
+            - DATABASE_HOST=mysql-db
+            - IDM_DB_PASS_FILE=/run/secrets/my_secret_data
+            - IDM_DB_USER=root
+            - IDM_HOST=http://localhost:3005
+            - IDM_PORT=3005
+ #           - IDM_HTTPS_ENABLED=${IDM_HTTPS_ENABLED}
+ #           - IDM_HTTPS_PORT=3443
+            - IDM_ADMIN_USER=alice
+            - IDM_ADMIN_EMAIL=alice-the-admin@test.com
+            - IDM_ADMIN_PASS=test
+        secrets:
+            - my_secret_data
+        healthcheck:
+            test: curl --fail -s http://localhost:3005/version || exit 1
+
+
+    mysql-db:
+        restart: always
+        image: mysql:5.7
+        hostname: mysql-db
+        container_name: db-mysql
+        expose:
+          - "3306"
+        ports:
+          - "3306:3306"
+        networks:
+          default:
+            ipv4_address: 172.18.1.6
+        environment:
+          - "MYSQL_ROOT_PASSWORD_FILE=/run/secrets/my_secret_data"
+          - "MYSQL_ROOT_HOST=172.18.1.5"
+        volumes:
+          - mysql-db:/var/lib/mysql
+          - ./mysql-data:/docker-entrypoint-initdb.d/:ro
+        secrets:
+          - my_secret_data
+
+
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: 172.18.1.0/24
+
+volumes:
+  mysql-db: ~
+  postgres-db: ~
+  elasticsearch-data: ~
+  wirecloud-static: ~
+  wirecloud-data: ~
+
+secrets:
+    my_secret_data:
+        file: ./secrets.txt
