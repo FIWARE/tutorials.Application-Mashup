@@ -134,12 +134,12 @@ The `wirecloud` container is connecting to **Keyrock** and is driven by environm
 | DB_HOST | `postgres-db` |  The name of the Wirecloud database |
 | DB_PASSWORD | `wirepass` | The password for the Wirecloud database - this should be protected by Docker Secrets  |
 | FORWARDED_ALLOW_IPS | `*` |   |
-| ELASTICSEARCH2_URL | `http://elasticsearch:9200/` |  The location the ElasticSearch service is listening o |
+| ELASTICSEARCH2_URL | `http://elasticsearch:9200/` |  The location the ElasticSearch service is listening on |
 | MEMCACHED_LOCATION | `memcached:11211` | The location the Memcahe service is listening on  |
-| FIWARE_IDM_URL | `http://localhost:3005` |  The URL of Keyrock used to display the login screen |
-| FIWARE_IDM_SERVER | `http://172.18.1.5:3005` | The URL of Keyrock used for OAuth2 Authentication  |
-| SOCIAL_AUTH_FIWARE_KEY | `wirecloud-dckr-site-0000-00000000000` |   |
-| SOCIAL_AUTH_FIWARE_SECRET | `wirecloud-docker-000000-clientsecret` |  |
+| FIWARE_IDM_URL | `http://localhost:3005` |  The URL of **Keyrock** used to display the login screen |
+| FIWARE_IDM_SERVER | `http://172.18.1.5:3005` | The URL of **Keyrock** used for OAuth2 Authentication  |
+| SOCIAL_AUTH_FIWARE_KEY | `wirecloud-dckr-site-0000-00000000000` | The Client ID defined by **Keyrock** for **Wirecloud**  |
+| SOCIAL_AUTH_FIWARE_SECRET | `wirecloud-docker-000000-clientsecret` | The Client Secret defined by **Keyrock** for **Wirecloud** |
 
 
 
