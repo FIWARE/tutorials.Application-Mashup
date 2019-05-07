@@ -8,8 +8,8 @@
 set -e
 
 loadData () {
-#	./import-data
-#	./provision-devices
+	./import-data
+	./provision-devices
 	echo ""
 }
 
@@ -62,12 +62,15 @@ case "${command}" in
         ;;
     "start")
 		stoppingContainers
-		echo -e "Starting six containers \033[1;34mOrion\033[0m, \033[1;36mIoT-Agent\033[0m, \033[1;31mKeyrock\033[0m, \033[1;35mWirecloud\033[0m, \033[1;30mTutorial\033[0m and \033[1;30mMongoDB\033[0m and \033[1;30mMySQL\033[0m databases."
+		echo -e "Starting ten containers \033[1;34mOrion\033[0m, \033[1;36mIoT-Agent\033[0m, \033[1;31mKeyrock\033[0m, \033[1;35mWirecloud\033[0m, \033[1;30mTutorial\033[0m"
+		echo -e "Along with the following databases: \033[1;30mMongoDB\033[0m, \033[1;30mPostGres\033[0m and \033[1;30mMySQL\033[0m"
+		echo -e "and microservices: \033[1;30mElasticSearch\033[0m, \033[1;30mMemCache\033[0m and \033[1;35mNGSI Proxy\033[0m\n"
 		echo -e "- \033[1;34mOrion\033[0m is the context broker"
 		echo -e "- \033[1;36mIoT-Agent\033[0m is configured for the UltraLight Protocol"
 		echo -e "- \033[1;30mTutorial\033[0m acts as a series of dummy IoT Sensors over HTTP"
 		echo -e "- \033[1;31mKeyrock\033[0m is an Identity Management Front-End"
 		echo -e "- \033[1;35mWirecloud\033[0m is a Dashboard Utility"
+		echo -e "- \033[1;35mNGSI Proxy\033[0m creates a server that is capable of redirecting Orion notifications to web pages"
 		startContainers false
 		loadData
 		waitForWirecloud
@@ -87,6 +90,3 @@ case "${command}" in
 		exit 127;
 		;;
 esac
-
-
-
