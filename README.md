@@ -51,41 +51,41 @@ Additional materials covering how to develop and create your own widgets will be
 >
 > — Fred R. Barnard (Printers' Ink)
 
-As a Smart solution evolves, it is necessary to be able to analyse and understand the current system context, so that
+As a Smart Solution evolves, it is necessary to be able to analyse and understand the current system context, so that
 appropriate decisions can be made. An obvious first step of data analysis is to display context data on screen. At this
 stage it is not necessarily known which context data is relevant and how it would be best displayed to the end user.
 Flexible rapid prototyping is required to be able to refine, enhance and manipulate the data, display and tweak the
 visualizations, and add further information as necessary.
 
-An application mashup is a web application which uses content from multiple sources to display a single new service with
-a graphical interface. Most mashups are visual and interactive by design, and many are short-lived representations which
-are only required to help analyse a single problem.
+An **application mashup** is a web application which uses content from multiple sources to display a single new service
+with a graphical interface. Most mashups are visual and interactive by design, and many are short-lived representations
+which are only required to help analyse a single problem.
 
 The [FIWARE Wirecloud](https://Wirecloud.rtfd.io) Generic Enabler is a tool which helps users to rapidly generate new
-mashups based on NGSI and other data sources. To speed up development, the Wirecloud architecture has been defined to
-split mashup operations into a series of simple reusable tasks (widgets and operators). Each task has well-defined input
-and output interfaces, and the Wirecloud UI allows mashup creators to wire up a series of tasks into a complex chain of
-data processing and visualization events.
+application mashups based on NGSI and other data sources. To speed up development, the Wirecloud architecture has been
+defined to split mashup operations into a series of simple reusable tasks (widgets and operators). Each task has
+well-defined input and output interfaces, and the Wirecloud UI allows mashup creators to wire up a series of tasks into
+a complex chain of data processing and visualization events.
 
-Broadly speaking mashup tasks can be split into four categories:
+Broadly speaking application mashup tasks can be split into four categories:
 
 -   **Data sources**: These are operators that provide information for consumption elsewhere. For example, an operator
     that retrieves some type of information from an NGSI web service.
--   **Data targets**: These operators push information out to an external microservice
--   **Data transformers**: This type of operator manipulates data in order to make it usable by other tasks within the
-    Wirecloud ecosystem. For example, transposing form list values or renaming attributes to align with an input
-    interface downstream
--   **Visual Components**: Combinations of HTML and JavaScript which display data on screen in a mashup. Within
-    Wirecloud, visual components are known as widgets.
+-   **Data targets**: The reverse of the above. These operators push information out to an external microservice
+-   **Data transformers**: This type of operator manipulates data in order to make it usable by other tasks further down
+    the chain within the Wirecloud ecosystem. For example, transposing form list values or renaming attributes to align
+    with an input interface downstream
+-   **Visual Components**: Combinations of HTML and JavaScript which display data on a browser online. Within Wirecloud,
+    visual components are known as widgets.
 
 The overall aim of Wirecloud is to allow someone without a programming background to be able to create data
 visualizations using a drag-and-drop interface. A wide range of existing open-source
 [Wirecloud Widgets and Operators](https://wirecloud.readthedocs.io/en/stable/widgets/) are already available and can be
 used to create complex visualizations.
 
-The existing widget and operator set covers a wide range of scenarios, but can be complemented by your own additional
-widgets. A background in JavaScript and HTML is necessary in this case. Creating your own widgets will be the subject of
-a subsequent tutorial.
+The existing [widget and operator set](https://wirecloud.readthedocs.io/en/stable/widgets/) covers a wide range of
+scenarios, but can be complemented by your own additional widgets. A background in JavaScript and HTML is necessary in
+this case. Creating your own widgets will be the subject of a subsequent tutorial.
 
 Once a mashup has been wired up and created it can be also be shared wholesale with end users.
 
@@ -113,7 +113,20 @@ to provide a command-line functionality similar to a Linux distribution on Windo
 
 # Architecture
 
-TBD
+This application adds the Wirecloud Application Mashup into the existing Stock Management and Sensors-based application
+created in [previous tutorials](https://github.com/FIWARE/tutorials.IoT-Agent/). The aim of the tutorial is to be able
+to monitor devices and wire-up a simple supermarket finder. This monitoring tool mashup will be able to duplicate and
+replace much of the visualisation functionality already found in the tutorial application itself (which is written in
+Jade Node.JS and JavaScript). The aim is to create an equivalent application without resorting to writing a line of
+code.
+
+The Users in Wirecloud have been created using the standard
+[identity management](https://github.com/FIWARE/tutorials.Identity-Management/) component. Overall the system makes make
+use of four FIWARE components - the [Orion Context Broker](https://fiware-orion.readthedocs.io/en/latest/),the
+[IoT Agent for UltraLight 2.0](https://fiware-iotagent-ul.readthedocs.io/en/latest/), the
+[Keyrock](https://fiware-idm.readthedocs.io/en/latest/) Identity Manager and the newly integrated
+[Wirecloud](https://wirecloud.readthedocs.io/en/stable/) application mashup tool. Usage of the Orion Context Broker is
+sufficient for an application to qualify as _“Powered by FIWARE”_.
 
 Therefore the overall architecture will consist of the following elements:
 
