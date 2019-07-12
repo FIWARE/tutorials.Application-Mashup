@@ -5,6 +5,13 @@
 [![Support badge](https://nexus.lab.fiware.org/repository/raw/public/badges/stackoverflow/wirecloud.svg)](https://stackoverflow.com/questions/tagged/fiware-wirecloud)
 <br/> [![Documentation](https://img.shields.io/readthedocs/fiware-tutorials.svg)](https://fiware-tutorials.rtfd.io)
 
+This tutorial is an introduction to [FIWARE Wirecloud](https://Wirecloud.rtfd.io) - a generic enabler visualization tool which allows
+end users without programming skills to create web applications and dashboards to visualize their NGSI data. The tutorial explains how to create a Wirecloud workspace and upload widget to visualise the data. Once the widgets are configured the data is displayed on screen
+
+The tutorial demonstrates examples of interactions using the Wirecloud GUI only. No programming is involved within the tutorial itself, as Wirecloud is designed to be usable by all type of user, even those with limited programming skills. However the commentary continues to reference various programming principles and standard concepts common to all FIWARE architectures.
+
+Additional materials covering how to develop and create your own widgets will be the subject of a later tutorial.
+
 ## Contents
 
 <details>
@@ -35,7 +42,42 @@
 
 # Visualizing NGSI Data using a Mashup
 
-TBD
+> "One picture is worth a thousand words."
+>
+> — Fred R. Barnard (Printers' Ink)
+
+Within the computer industry, an application mashup is a web page which uses content from multiple sources to display a single new service with a graphical interface. Most mashups are visual and interactive by design, and many are short-lived representations which are only required to help analyse a single problem.
+
+The FIWARE Wirecloud Generic Enabler is a tool which helps users to rapidly generate new mashups based on NGSI data sources. Prototyping
+
+ will l
+
+
+Solutions can also be shared easily
+
+Within the FIWARE ecosystem the context data will come from one or more NGSI sources, and the data can be displayed in multiple ways.
+
+The felx
+
+Web mashups are targeted at leveraging the "long tail" of the Web of Services by exploiting rapid development, DIY, and shareability. They typically serve a specific situational (i.e. immediate, short-lived, customised, specific) need, frequently with high potential for reuse. Is this "situational" character which preclude them to be offered as 'off-the-self' functionality by solution providers.
+
+Web mashups can be manually developed using conventional web programming technologies (e.g. see http://programmableweb.com). But this approach fails to take full advantage of the approach. Mashup tools and platforms like WireCloud aim at development paradigms that do not require programming skills and, hence, address end users, thus leveraging the long tail of the Web of Services.
+
+WireCloud builds on cutting-edge end-user development, RIA and semantic technologies to offer a next-generation end-user centred mashup platform aimed at leveraging the long tail of the Internet of Services.
+
+Key Features
+WireCloud helps end users to innovate through experimentation by choosing the best suited widgets and prefab mashups (a.k.a. mashup-lets) for your devised mashup from a vast, ever-growing distributed catalogue.
+
+WireCloud offers its main features through two integrated tools:
+
+The wiring editor, which allows you to easily connect widgets in a mashup to create a full-fledged dashboard with RIA functionality
+The piping editor, which allows you to easily connect widgets to back-end services or data sources through an extendable set of operators, including filters, aggregators, adapters, etc.
+Besides, WireCloud allows you to easily share your newly created mashup with other colleagues and users. Comment it, tag it and rate it to foster discoverability and shareability. WireCloud helps to build a strong community by commenting, tagging and rating others' widgets, operators and mashups. The platform will also do its best to complement your contribution.
+
+
+
+
+
 
 # Prerequisites
 

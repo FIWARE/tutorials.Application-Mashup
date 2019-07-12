@@ -2,68 +2,8 @@ version: '3.5'
 
 services:
 
-    ngsi-proxy:
-        image: ngsi-proxy
-        hostname: ngsi-proxy
-        container_name: ngsi-proxy
-        networks:
-          default:
-            ipv4_address: 172.18.1.14
-        expose:
-            - "8100"
-        ports:
-            - "8100:8100"
-        environment:
-            - PORT=8100
-            - TRUST_PROXY_HEADERS=0
-
-    postgres-db:
-        image: postgres
-        hostname: postgres-db
-        container_name: db-postgres
-        restart: always
-        ports:
-          - "5432:5432"
-        networks:
-          default:
-            ipv4_address: 172.18.1.13
-        environment:
-            - POSTGRES_PASSWORD=wirepass   # Change this password!
-        volumes:
-            - postgres-db:/var/lib/postgresql/data
-
-
-
-    elasticsearch:
-        image: elasticsearch:2.4
-        container_name: wc-elasticsearch
-        hostname: elasticsearch
-        ports:
-            - "9200:9200"
-        networks:
-          default:
-            ipv4_address: 172.18.1.12
-
-        restart: always
-        volumes:
-            - elasticsearch-data:/usr/share/elasticsearch/data
-        command: elasticsearch -Des.index.max_result_window=50000
-
-    memcached:
-        image: memcached:1
-        container_name: wc-memcached
-        hostname: memcached
-        ports:
-            - "11211:11211"
-        networks:
-          default:
-            ipv4_address: 172.18.1.11
-
-        restart: always
-        command: memcached -m 2048m
-
     wirecloud:
-        image: wirecloudx
+        image: fiware/wirecloud:1.3.1
         container_name: fiware-wirecloud
         hostname: wirecloud
         ports:
@@ -86,7 +26,7 @@ services:
             - FORWARDED_ALLOW_IPS=*
             - ELASTICSEARCH2_URL=http://elasticsearch:9200/
             - MEMCACHED_LOCATION=memcached:11211
-            - FIWARE_IDM_URL=http://localhost:3005
+            - FIWARE_IDM_PUBLIC_URL=http://localhost:3005
             - FIWARE_IDM_SERVER=http://172.18.1.5:3005
             - SOCIAL_AUTH_FIWARE_KEY=wirecloud-dckr-site-0000-00000000000
             - SOCIAL_AUTH_FIWARE_SECRET=wirecloud-docker-000000-clientsecret
@@ -95,7 +35,7 @@ services:
             - wirecloud-static:/var/www/static
   
     keyrock:
-        image: fiware/idm:7.6.0
+        image: fiware/idm:7.7.0
         container_name: fiware-keyrock
         hostname: keyrock
         networks:
@@ -122,38 +62,6 @@ services:
             test: curl --fail -s http://localhost:3005/version || exit 1
 
 
-    mysql-db:
-        restart: always
-        image: mysql:5.7
-        hostname: mysql-db
-        container_name: db-mysql
-        expose:
-          - "3306"
-        ports:
-          - "3306:3306"
-        networks:
-          default:
-            ipv4_address: 172.18.1.6
-        environment:
-          - "MYSQL_ROOT_PASSWORD_FILE=/run/secrets/my_secret_data"
-          - "MYSQL_ROOT_HOST=172.18.1.5"
-        volumes:
-          - mysql-db:/var/lib/mysql
-          - ./mysql-data:/docker-entrypoint-initdb.d/:ro
-        secrets:
-          - my_secret_data
-
-    mongo-db:
-        image: mongo:3.6
-        hostname: mongo-db
-        container_name: db-mongo
-        ports:
-          - "27017:27017"
-        networks:
-            default: ~
-        command: --bind_ip_all --smallfiles
-        volumes:
-          - mongo-db:/data
 
     orion:
         image: fiware/orion:2.2.0
@@ -171,7 +79,7 @@ services:
           test: curl --fail -s http://orion:1026/version || exit 1
 
     iot-agent:
-        image: fiware/iotagent-ul:1.8.0
+        image: fiware/iotagent-ul:1.9.0
         hostname: iot-agent
         container_name: fiware-iot-agent
         depends_on:
@@ -241,6 +149,104 @@ services:
           - "CALLBACK_URL=http://localhost:3000/login"
         healthcheck:
           test: curl --fail -s http://tutorial:3000/version || exit 1
+
+    # Databases
+
+
+
+    postgres-db:
+        image: postgres
+        hostname: postgres-db
+        container_name: db-postgres
+        restart: always
+        ports:
+          - "5432:5432"
+        networks:
+          default:
+            ipv4_address: 172.18.1.13
+        environment:
+            - POSTGRES_PASSWORD=wirepass   # Change this password!
+        volumes:
+            - postgres-db:/var/lib/postgresql/data
+
+    mysql-db:
+        restart: always
+        image: mysql:5.7
+        hostname: mysql-db
+        container_name: db-mysql
+        expose:
+          - "3306"
+        ports:
+          - "3306:3306"
+        networks:
+          default:
+            ipv4_address: 172.18.1.6
+        environment:
+          - "MYSQL_ROOT_PASSWORD_FILE=/run/secrets/my_secret_data"
+          - "MYSQL_ROOT_HOST=172.18.1.5"
+        volumes:
+          - mysql-db:/var/lib/mysql
+          - ./mysql-data:/docker-entrypoint-initdb.d/:ro
+        secrets:
+          - my_secret_data
+
+    mongo-db:
+        image: mongo:3.6
+        hostname: mongo-db
+        container_name: db-mongo
+        ports:
+          - "27017:27017"
+        networks:
+            default: ~
+        command: --bind_ip_all --smallfiles
+        volumes:
+          - mongo-db:/data
+
+
+    # Other services
+
+    ngsi-proxy:
+        image: fiware/ngsiproxy:1.2.0
+        hostname: ngsi-proxy
+        container_name: wc-ngsi-proxy
+        networks:
+          default:
+            ipv4_address: 172.18.1.14
+        expose:
+            - "8100"
+        ports:
+            - "8100:8100"
+        environment:
+            - PORT=8100
+            - TRUST_PROXY_HEADERS=0
+
+    elasticsearch:
+        image: elasticsearch:2.4
+        container_name: wc-elasticsearch
+        hostname: elasticsearch
+        ports:
+            - "9200:9200"
+        networks:
+          default:
+            ipv4_address: 172.18.1.12
+
+        restart: always
+        volumes:
+            - elasticsearch-data:/usr/share/elasticsearch/data
+        command: elasticsearch -Des.index.max_result_window=50000
+
+    memcached:
+        image: memcached:1
+        container_name: wc-memcached
+        hostname: memcached
+        ports:
+            - "11211:11211"
+        networks:
+          default:
+            ipv4_address: 172.18.1.11
+
+        restart: always
+        command: memcached -m 2048m
 
 
 networks:
