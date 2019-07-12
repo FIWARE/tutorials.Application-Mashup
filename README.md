@@ -5,10 +5,15 @@
 [![Support badge](https://nexus.lab.fiware.org/repository/raw/public/badges/stackoverflow/wirecloud.svg)](https://stackoverflow.com/questions/tagged/fiware-wirecloud)
 <br/> [![Documentation](https://img.shields.io/readthedocs/fiware-tutorials.svg)](https://fiware-tutorials.rtfd.io)
 
-This tutorial is an introduction to [FIWARE Wirecloud](https://Wirecloud.rtfd.io) - a generic enabler visualization tool which allows
-end users without programming skills to create web applications and dashboards to visualize their NGSI data. The tutorial explains how to create a Wirecloud workspace and upload widget to visualise the data. Once the widgets are configured the data is displayed on screen
+This tutorial is an introduction to [FIWARE Wirecloud](https://Wirecloud.rtfd.io) - a generic enabler visualization tool
+which allows end users without programming skills to create web applications and dashboards to visualize their NGSI
+data. The tutorial explains how to create a Wirecloud workspace and upload widget to visualise the data. Once the
+widgets are configured the data is displayed on screen
 
-The tutorial demonstrates examples of interactions using the Wirecloud GUI only. No programming is involved within the tutorial itself, as Wirecloud is designed to be usable by all type of user, even those with limited programming skills. However the commentary continues to reference various programming principles and standard concepts common to all FIWARE architectures.
+The tutorial demonstrates examples of interactions using the Wirecloud GUI only. No programming is involved within the
+tutorial itself, as Wirecloud is designed to be usable by all type of user, even those with limited programming skills.
+However the commentary continues to reference various programming principles and standard concepts common to all FIWARE
+architectures.
 
 Additional materials covering how to develop and create your own widgets will be the subject of a later tutorial.
 
@@ -46,38 +51,43 @@ Additional materials covering how to develop and create your own widgets will be
 >
 > — Fred R. Barnard (Printers' Ink)
 
-Within the computer industry, an application mashup is a web page which uses content from multiple sources to display a single new service with a graphical interface. Most mashups are visual and interactive by design, and many are short-lived representations which are only required to help analyse a single problem.
+As a Smart solution evolves, it is necessary to be able to analyse and understand the current system context, so that
+appropriate decisions can be made. An obvious first step of data analysis is to display context data on screen. At this
+stage it is not necessarily known which context data is relevant and how it would be best displayed to the end user.
+Flexible rapid prototyping is required to be able to refine, enhance and manipulate the data, display and tweak the
+visualizations, and add further information as necessary.
 
-The FIWARE Wirecloud Generic Enabler is a tool which helps users to rapidly generate new mashups based on NGSI data sources. Prototyping
+An application mashup is a web application which uses content from multiple sources to display a single new service with
+a graphical interface. Most mashups are visual and interactive by design, and many are short-lived representations which
+are only required to help analyse a single problem.
 
- will l
+The [FIWARE Wirecloud](https://Wirecloud.rtfd.io) Generic Enabler is a tool which helps users to rapidly generate new
+mashups based on NGSI and other data sources. To speed up development, the Wirecloud architecture has been defined to
+split mashup operations into a series of simple reusable tasks (widgets and operators). Each task has well-defined input
+and output interfaces, and the Wirecloud UI allows mashup creators to wire up a series of tasks into a complex chain of
+data processing and visualization events.
 
+Broadly speaking mashup tasks can be split into four categories:
 
-Solutions can also be shared easily
+-   **Data sources**: These are operators that provide information for consumption elsewhere. For example, an operator
+    that retrieves some type of information from an NGSI web service.
+-   **Data targets**: These operators push information out to an external microservice
+-   **Data transformers**: This type of operator manipulates data in order to make it usable by other tasks within the
+    Wirecloud ecosystem. For example, transposing form list values or renaming attributes to align with an input
+    interface downstream
+-   **Visual Components**: Combinations of HTML and JavaScript which display data on screen in a mashup. Within
+    Wirecloud, visual components are known as widgets.
 
-Within the FIWARE ecosystem the context data will come from one or more NGSI sources, and the data can be displayed in multiple ways.
+The overall aim of Wirecloud is to allow someone without a programming background to be able to create data
+visualizations using a drag-and-drop interface. A wide range of existing open-source
+[Wirecloud Widgets and Operators](https://wirecloud.readthedocs.io/en/stable/widgets/) are already available and can be
+used to create complex visualizations.
 
-The felx
+The existing widget and operator set covers a wide range of scenarios, but can be complemented by your own additional
+widgets. A background in JavaScript and HTML is necessary in this case. Creating your own widgets will be the subject of
+a subsequent tutorial.
 
-Web mashups are targeted at leveraging the "long tail" of the Web of Services by exploiting rapid development, DIY, and shareability. They typically serve a specific situational (i.e. immediate, short-lived, customised, specific) need, frequently with high potential for reuse. Is this "situational" character which preclude them to be offered as 'off-the-self' functionality by solution providers.
-
-Web mashups can be manually developed using conventional web programming technologies (e.g. see http://programmableweb.com). But this approach fails to take full advantage of the approach. Mashup tools and platforms like WireCloud aim at development paradigms that do not require programming skills and, hence, address end users, thus leveraging the long tail of the Web of Services.
-
-WireCloud builds on cutting-edge end-user development, RIA and semantic technologies to offer a next-generation end-user centred mashup platform aimed at leveraging the long tail of the Internet of Services.
-
-Key Features
-WireCloud helps end users to innovate through experimentation by choosing the best suited widgets and prefab mashups (a.k.a. mashup-lets) for your devised mashup from a vast, ever-growing distributed catalogue.
-
-WireCloud offers its main features through two integrated tools:
-
-The wiring editor, which allows you to easily connect widgets in a mashup to create a full-fledged dashboard with RIA functionality
-The piping editor, which allows you to easily connect widgets to back-end services or data sources through an extendable set of operators, including filters, aggregators, adapters, etc.
-Besides, WireCloud allows you to easily share your newly created mashup with other colleagues and users. Comment it, tag it and rate it to foster discoverability and shareability. WireCloud helps to build a strong community by commenting, tagging and rating others' widgets, operators and mashups. The platform will also do its best to complement your contribution.
-
-
-
-
-
+Once a mashup has been wired up and created it can be also be shared wholesale with end users.
 
 # Prerequisites
 
@@ -174,7 +184,7 @@ image: fiware/wirecloud
             - FORWARDED_ALLOW_IPS=*
             - ELASTICSEARCH2_URL=http://elasticsearch:9200/
             - MEMCACHED_LOCATION=memcached:11211
-            - FIWARE_IDM_URL=http://localhost:3005
+            - FIWARE_IDM_PUBLIC_URL=http://localhost:3005
             - FIWARE_IDM_SERVER=http://172.18.1.5:3005
             - SOCIAL_AUTH_FIWARE_KEY=wirecloud-dckr-site-0000-00000000000
             - SOCIAL_AUTH_FIWARE_SECRET=wirecloud-docker-000000-clientsecret
@@ -197,7 +207,7 @@ The `wirecloud` container is connecting to **Keyrock** and is driven by environm
 | FORWARDED_ALLOW_IPS       | `*`                                    |                                                                                      |
 | ELASTICSEARCH2_URL        | `http://elasticsearch:9200/`           | The location the ElasticSearch service is listening on                               |
 | MEMCACHED_LOCATION        | `memcached:11211`                      | The location the Memcahe service is listening on                                     |
-| FIWARE_IDM_URL            | `http://localhost:3005`                | The URL of **Keyrock** used to display the login screen                              |
+| FIWARE_IDM_PUBLIC_URL     | `http://localhost:3005`                | The URL of **Keyrock** used to display the login screen                              |
 | FIWARE_IDM_SERVER         | `http://172.18.1.5:3005`               | The URL of **Keyrock** used for OAuth2 Authentication                                |
 | SOCIAL_AUTH_FIWARE_KEY    | `wirecloud-dckr-site-0000-00000000000` | The Client ID defined by **Keyrock** for **Wirecloud**                               |
 | SOCIAL_AUTH_FIWARE_SECRET | `wirecloud-docker-000000-clientsecret` | The Client Secret defined by **Keyrock** for **Wirecloud**                           |
