@@ -113,16 +113,17 @@ to provide a command-line functionality similar to a Linux distribution on Windo
 
 # Architecture
 
-This application adds the Wirecloud Application Mashup into the existing Stock Management and Sensors-based application
-created in [previous tutorials](https://github.com/FIWARE/tutorials.IoT-Agent/). The aim of the tutorial is to be able
-to monitor devices and wire-up a simple supermarket finder. This monitoring tool mashup will be able to duplicate and
-replace much of the visualisation functionality already found in the tutorial application itself (which is written in
-Jade Node.JS and JavaScript). The aim is to create an equivalent application without resorting to writing a line of
-code.
+This application adds the **Wirecloud** application mashup into the existing Stock Management and Sensors-based
+application created in [previous tutorials](https://github.com/FIWARE/tutorials.IoT-Agent/). The aim of the tutorial is
+to be able to monitor devices and wire-up a simple supermarket finder. This monitoring tool mashup will be able to
+duplicate and replace much of the visualisation functionality already found in the tutorial application itself (which is
+written in PUG, Node.JS and JavaScript). The aim is to create an equivalent application without resorting to writing a
+line of code.
 
-The Users in Wirecloud have been created using the standard
-[identity management](https://github.com/FIWARE/tutorials.Identity-Management/) component. Overall the system makes make
-use of four FIWARE components - the [Orion Context Broker](https://fiware-orion.readthedocs.io/en/latest/),the
+The Users in **Wirecloud** have been created using the standard
+[identity management](https://github.com/FIWARE/tutorials.Identity-Management/) component, **Keyrock**. Overall the
+system makes make use of four FIWARE components - the
+[Orion Context Broker](https://fiware-orion.readthedocs.io/en/latest/),the
 [IoT Agent for UltraLight 2.0](https://fiware-iotagent-ul.readthedocs.io/en/latest/), the
 [Keyrock](https://fiware-idm.readthedocs.io/en/latest/) Identity Manager and the newly integrated
 [Wirecloud](https://wirecloud.readthedocs.io/en/stable/) application mashup tool. Usage of the Orion Context Broker is
@@ -246,6 +247,8 @@ repository:
 ./services start
 ```
 
+Then go to your browser and open **Wirecloud** using the URL: `http://localhost:8000/`
+
 > :information_source: **Note:** If you want to clean up and start over again you can do so with the following command:
 >
 > ```console
@@ -254,33 +257,83 @@ repository:
 
 ## Log in
 
--   ![](https://jason-fox.github.io/tutorials.Application-Mashup/img/login.png)
+**Wirecloud** is enabled for Oauth2 security, and as mentioned previously, user an admin user has already been created
+for the **Wirecloud** application. To start creating a mashup, click on the **Sign in** button on the top right of the
+page and sign in to **Keyrock** using `alice-the-admin@test.com` with the password `test`.
 
--   ![](https://jason-fox.github.io/tutorials.Application-Mashup/img/back-button.png)
+![](https://jason-fox.github.io/tutorials.Application-Mashup/img/login.png)
+
+> **Note:** if you want to see how Alice has been authorized to use **Wirecloud**, you can Log in to **Keyrock** itself,
+> and look at Alice's applications (`http://localhost:3005/idm/applications`)
+>
+> The **Wirecloud** application is set up as follows:
+>
+> -   URL: `http://localhost:8000`
+> -   Callback: `http://localhost:8000/complete/fiware/`
+> -   The application has one single role called `admin`
+> -   The `admin` role has a single blank permission.
+> -   The `admin` role has been assigned to Alice.
 
 # Adding Resources to Wirecloud
 
+As noted above, **Wirecloud** relies on widgets and operators to connect to NGSI sources, manipulate data and display
+something on screen. As a first step these widgets (`*.wgt`) must be uploaded into **Wirecloud**. It is possible to do
+this programmatically, but for this tutorial, the user is directed to upload widgets manually.
+
 ## Upload Widgets
 
--   ![](https://jason-fox.github.io/tutorials.Application-Mashup/img/my-resources-button.png)
+To upload resources click on the **My Resources** button:
 
--   ![](https://jason-fox.github.io/tutorials.Application-Mashup/img/upload-button.png)
+![](https://jason-fox.github.io/tutorials.Application-Mashup/img/my-resources-button.png)
 
--   ![](https://jason-fox.github.io/tutorials.Application-Mashup/img/upload-widgets.png)
+A series of resources may already be available, however for this tutorial additional widgets and operators are required.
+Click on the **Upload** button
 
--   ![](https://jason-fox.github.io/tutorials.Application-Mashup/img/upload-components-list.png)
+![](https://jason-fox.github.io/tutorials.Application-Mashup/img/upload-button.png)
 
--   ![](https://jason-fox.github.io/tutorials.Application-Mashup/img/my-resources.png)
+Then and click on \*\*Select files from your computer.
+
+![](https://jason-fox.github.io/tutorials.Application-Mashup/img/upload-widgets.png)
+
+Navigate to the root of this repository and select all the files found in the `widgets` directory as shown:
+
+![](https://jason-fox.github.io/tutorials.Application-Mashup/img/upload-components-list.png)
+
+Clicking on upload will add the widgets to the application
+
+![](https://jason-fox.github.io/tutorials.Application-Mashup/img/my-resources.png)
+
+Sources of Wirecloud Widgets can be found on the
+[Wirecloud Marketplace](https://wirecloud.readthedocs.io/en/stable/user_guide/#browsing-the-marketplace). Alternatively
+individual Widget binaries (`*.wgt`) can be downloaded directly from available releases on GitHub. A list of common
+widgets and thier location can be found in the appendix to the
+[Wirecloud documentation](https://wirecloud.readthedocs.io/en/stable/widgets/)
+
+Click on the back button to return to the homepage
+
+![](https://jason-fox.github.io/tutorials.Application-Mashup/img/back-button.png)
 
 ## Creating a Workspace
 
--   ![](https://jason-fox.github.io/tutorials.Application-Mashup/img/new-workspace.png)
+Individual mashups are created in different workspaces, allowing the user to offer separate views with different URLs.
+To create a workspace click on the hamburger button and select new workspace.
 
--   ![](https://jason-fox.github.io/tutorials.Application-Mashup/img/create-workspace.png)
+![](https://jason-fox.github.io/tutorials.Application-Mashup/img/new-workspace.png)
 
--   ![](https://jason-fox.github.io/tutorials.Application-Mashup/img/selecting-a-workspace.png)
+Fill in the dialog as shown to create an empty workspace
 
--   ![](https://jason-fox.github.io/tutorials.Application-Mashup/img/workspace.png)
+![](https://jason-fox.github.io/tutorials.Application-Mashup/img/create-workspace.png)
+
+Tthe workspace will open. The URL in the browser bar will alter to `http://localhost:8000/<user>/<workspace>`
+
+![](https://jason-fox.github.io/tutorials.Application-Mashup/img/workspace.png)
+
+The workspace will also be added to the list of available workspace s found under the hamburger button. Any available
+workspace can be selected on click
+
+![](https://jason-fox.github.io/tutorials.Application-Mashup/img/selecting-a-workspace.png)
+
+You can return to the homepage by selecting the back button.
 
 # Creating Application Mashups
 
@@ -339,6 +392,8 @@ repository:
 -   ![](https://jason-fox.github.io/tutorials.Application-Mashup/img/osm-map-result.png)
 
 -   ![](https://jason-fox.github.io/tutorials.Application-Mashup/img/osm-map-on-click.png)
+
+????
 
 # Next Steps
 
