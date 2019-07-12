@@ -291,25 +291,25 @@ Click on the **Upload** button
 
 ![](https://jason-fox.github.io/tutorials.Application-Mashup/img/upload-button.png)
 
-Then and click on \*\*Select files from your computer.
+Then and click on **Select files from your computer**.
 
 ![](https://jason-fox.github.io/tutorials.Application-Mashup/img/upload-widgets.png)
+
+Sources of Wirecloud Widgets can be found on the
+[Wirecloud Marketplace](https://wirecloud.readthedocs.io/en/stable/user_guide/#browsing-the-marketplace). Alternatively
+individual Widget binaries (`*.wgt`) can be downloaded directly from available releases on GitHub. A list of common
+widgets and their location can be found in the appendix to the
+[Wirecloud documentation](https://wirecloud.readthedocs.io/en/stable/widgets/)
 
 Navigate to the root of this repository and select all the files found in the `widgets` directory as shown:
 
 ![](https://jason-fox.github.io/tutorials.Application-Mashup/img/upload-components-list.png)
 
-Clicking on upload will add the widgets to the application
+Clicking on upload will add the resources to **Wirecloud**.
 
 ![](https://jason-fox.github.io/tutorials.Application-Mashup/img/my-resources.png)
 
-Sources of Wirecloud Widgets can be found on the
-[Wirecloud Marketplace](https://wirecloud.readthedocs.io/en/stable/user_guide/#browsing-the-marketplace). Alternatively
-individual Widget binaries (`*.wgt`) can be downloaded directly from available releases on GitHub. A list of common
-widgets and thier location can be found in the appendix to the
-[Wirecloud documentation](https://wirecloud.readthedocs.io/en/stable/widgets/)
-
-Click on the back button to return to the homepage
+Click on the back button to return to the homepage.
 
 ![](https://jason-fox.github.io/tutorials.Application-Mashup/img/back-button.png)
 
@@ -320,40 +320,81 @@ To create a workspace click on the hamburger button and select new workspace.
 
 ![](https://jason-fox.github.io/tutorials.Application-Mashup/img/new-workspace.png)
 
-Fill in the dialog as shown to create an empty workspace
+Fill in the dialog as shown to create an empty workspace.
 
 ![](https://jason-fox.github.io/tutorials.Application-Mashup/img/create-workspace.png)
 
-Tthe workspace will open. The URL in the browser bar will alter to `http://localhost:8000/<user>/<workspace>`
+Tthe workspace will open. The URL in the browser bar will alter to `http://localhost:8000/<user>/<workspace>`.
 
 ![](https://jason-fox.github.io/tutorials.Application-Mashup/img/workspace.png)
 
-The workspace will also be added to the list of available workspace s found under the hamburger button. Any available
+The workspace will also be added to the list of available workspaces found under the hamburger button. Any available
 workspace can be selected on click
 
 ![](https://jason-fox.github.io/tutorials.Application-Mashup/img/selecting-a-workspace.png)
 
 You can return to the homepage by selecting the back button.
 
+![](https://jason-fox.github.io/tutorials.Application-Mashup/img/back-button.png)
+
 # Creating Application Mashups
+
+An application mashup can be created by adding widgets to a workspace. At a minimum there must be one data source and
+one visual component, but some widgets combine these functions into a single browser widget.
+
+More complex mashups will consist of a series of widgets and operations linked together using wirecloud wiring.
 
 ## Creating a simple Mashup
 
-### Selecting Widgets
+The _Hello World_ of Wirecloud components involves adding a single browser widget on screen and then configuring it to
+display some context data.
 
--   ![](https://jason-fox.github.io/tutorials.Application-Mashup/img/wiring-view.png)
-
-### NSGI Browser Widget
-
--   ![](https://jason-fox.github.io/tutorials.Application-Mashup/img/ngsi-browser-widget.png)
-
--   ![](https://jason-fox.github.io/tutorials.Application-Mashup/img/ngsi-browser-wiring.png)
-
--   ![](https://jason-fox.github.io/tutorials.Application-Mashup/img/ngsi-browser-settings.png)
+As you would expect, this tutorial relies on context data from the context broeker. To ensure that the IoT devices are
+running, open the tutorial application (`http://localhost:3000/`) in a new browser window. Log in as
+`bob-the-manager@test.com` with the password `test` and click on device monitor. Bob can switch on the lamp to obtain
+some context data for the mashup.
 
 -   ![](https://jason-fox.github.io/tutorials.Application-Mashup/img/devices-lamp-on.png)
 
--   ![](https://jason-fox.github.io/tutorials.Application-Mashup/img/ngsi-browser-ui.png)
+### Selecting Widgets and Operators
+
+Click the **Edit** button to switch the workspace to edit mode, then click on the **Find Components** button to add a
+widget or operator to the workspace
+
+![](https://jason-fox.github.io/tutorials.Application-Mashup/img/wiring-view.png)
+
+The components sidebar will be displayed
+
+### NSGI Browser Widget
+
+Since we require a visual component, in the components sidebar select **Widgets** and then scroll down until you find
+the NGSI Browser
+
+-   ![](https://jason-fox.github.io/tutorials.Application-Mashup/img/ngsi-browser-widget.png)
+
+Clicking on the **+** button will add an unconfigured NGSI Browser on screen
+
+> **Note:** the widget can be removed by clicking on the **x** at the top right of the window
+
+The next step is to configure the widget. Click on the wiring button to switch to the wiring view, and select
+**Widgets** from the components sidebar. Scrolling down to the NGSI browser shows an available widget in orange
+
+![](https://jason-fox.github.io/tutorials.Application-Mashup/img/ngsi-browser-wiring.png)
+
+Clicking on the orange button brings up the settings to configure. Select the hamburger to obtain a dropdown and click
+on settings to configure as shown:
+
+![](https://jason-fox.github.io/tutorials.Application-Mashup/img/ngsi-browser-settings.png)
+
+Then click on **Accept**
+
+Click on the back button to return to the workspace view.
+
+![](https://jason-fox.github.io/tutorials.Application-Mashup/img/back-button.png)
+
+The NGSI browser should be displaying live data as shown:
+
+![](https://jason-fox.github.io/tutorials.Application-Mashup/img/ngsi-browser-ui.png)
 
 ## Combining Multiple Widgets within a Mashup
 
