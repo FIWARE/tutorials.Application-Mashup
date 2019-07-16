@@ -1,4 +1,4 @@
-[![FIWARE Banner](https://jason-fox.github.io/tutorials.Application-Mashup/img/fiware.png)](https://www.fiware.org/developers)
+[![FIWARE Banner](https://fiware.github.io/tutorials.Application-Mashup/img/fiware.png)](https://www.fiware.org/developers)
 
 [![FIWARE Visualization](https://nexus.lab.fiware.org/repository/raw/public/badges/chapters/visualization.svg)](https://www.fiware.org/developers/catalogue/)
 [![License: MIT](https://img.shields.io/github/license/fiware/tutorials.Application-Mashup.svg)](https://opensource.org/licenses/MIT)
@@ -210,7 +210,7 @@ Therefore the overall architecture will consist of the following elements:
 Since all interactions between the elements are initiated by HTTP requests, the
 entities can be containerized and run from exposed ports.
 
-![](https://jason-fox.github.io/tutorials.Application-Mashup/img/architecture.png)
+![](https://fiware.github.io/tutorials.Application-Mashup/img/architecture.png)
 
 The specific architecture of each section of the tutorial is discussed below.
 
@@ -309,7 +309,7 @@ start creating a mashup, click on the **Sign in** button on the top right of the
 page and sign in to **Keyrock** using `alice-the-admin@test.com` with the
 password `test`.
 
-![](https://jason-fox.github.io/tutorials.Application-Mashup/img/login.png)
+![](https://fiware.github.io/tutorials.Application-Mashup/img/login.png)
 
 > **Note:** if you want to see how Alice has been authorized to use
 > **Wirecloud**, you can Log in to **Keyrock** itself, and look at Alice's
@@ -335,16 +335,16 @@ manually.
 
 To upload resources click on the **My Resources** button:
 
-![](https://jason-fox.github.io/tutorials.Application-Mashup/img/my-resources-button.png)
+![](https://fiware.github.io/tutorials.Application-Mashup/img/my-resources-button.png)
 
 A series of resources may already be available, however for this tutorial
 additional widgets and operators are required. Click on the **Upload** button
 
-![](https://jason-fox.github.io/tutorials.Application-Mashup/img/upload-button.png)
+![](https://fiware.github.io/tutorials.Application-Mashup/img/upload-button.png)
 
 Then and click on **Select files from your computer**.
 
-![](https://jason-fox.github.io/tutorials.Application-Mashup/img/upload-widgets.png)
+![](https://fiware.github.io/tutorials.Application-Mashup/img/upload-widgets.png)
 
 Sources of Wirecloud Widgets can be found on the
 [Wirecloud Marketplace](https://wirecloud.readthedocs.io/en/stable/user_guide/#browsing-the-marketplace).
@@ -356,11 +356,11 @@ can be found in the appendix to the
 Navigate to the root of this repository and select all the files found in the
 `widgets` directory as shown:
 
-![](https://jason-fox.github.io/tutorials.Application-Mashup/img/upload-components-list.png)
+![](https://fiware.github.io/tutorials.Application-Mashup/img/upload-components-list.png)
 
 Clicking on upload will add the resources to **Wirecloud**.
 
-![](https://jason-fox.github.io/tutorials.Application-Mashup/img/my-resources.png)
+![](https://fiware.github.io/tutorials.Application-Mashup/img/my-resources.png)
 
 Just click on any available widget to obtain a summary of the widget's usage.
 More details about the available inputs and outputs and how to wire up each
@@ -368,7 +368,7 @@ widget can do can be found in the widget's documentation.
 
 To return to the homepage, click on the back button
 
-![](https://jason-fox.github.io/tutorials.Application-Mashup/img/back-button.png)
+![](https://fiware.github.io/tutorials.Application-Mashup/img/back-button.png)
 
 ## Creating a Workspace
 
@@ -376,25 +376,25 @@ Individual mashups are created in different workspaces, allowing the user to
 offer separate views with different URLs. To create a workspace click on the
 hamburger button and select new workspace.
 
-![](https://jason-fox.github.io/tutorials.Application-Mashup/img/new-workspace.png)
+![](https://fiware.github.io/tutorials.Application-Mashup/img/new-workspace.png)
 
 Fill in the dialog as shown to create an empty workspace.
 
-![](https://jason-fox.github.io/tutorials.Application-Mashup/img/create-workspace.png)
+![](https://fiware.github.io/tutorials.Application-Mashup/img/create-workspace.png)
 
 Tthe workspace will open. The URL in the browser bar will alter to
 `http://localhost:8000/<user>/<workspace>`.
 
-![](https://jason-fox.github.io/tutorials.Application-Mashup/img/workspace.png)
+![](https://fiware.github.io/tutorials.Application-Mashup/img/workspace.png)
 
 The workspace will also be added to the list of available workspaces found under
 the hamburger button. Any available workspace can be selected on click
 
-![](https://jason-fox.github.io/tutorials.Application-Mashup/img/selecting-a-workspace.png)
+![](https://fiware.github.io/tutorials.Application-Mashup/img/selecting-a-workspace.png)
 
 You can return to the homepage by selecting the back button.
 
-![](https://jason-fox.github.io/tutorials.Application-Mashup/img/back-button.png)
+![](https://fiware.github.io/tutorials.Application-Mashup/img/back-button.png)
 
 # Creating Application Mashups
 
@@ -416,14 +416,14 @@ application (`http://localhost:3000/`) in a new browser window. Log in as
 `bob-the-manager@test.com` with the password `test` and click on device monitor.
 Bob can switch on the lamp to obtain some context data for the mashup.
 
--   ![](https://jason-fox.github.io/tutorials.Application-Mashup/img/devices-lamp-on.png)
+-   ![](https://fiware.github.io/tutorials.Application-Mashup/img/devices-lamp-on.png)
 
 ### Selecting Widgets and Operators
 
 Click the **Edit** button to switch the workspace to edit mode, then click on
 the **Find Components** button to add a widget or operator to the workspace
 
-![](https://jason-fox.github.io/tutorials.Application-Mashup/img/wiring-view.png)
+![](https://fiware.github.io/tutorials.Application-Mashup/img/wiring-view.png)
 
 The components sidebar will be displayed
 
@@ -432,7 +432,7 @@ The components sidebar will be displayed
 Since we require a visual component, in the components sidebar select
 **Widgets** and then scroll down until you find the NGSI Browser
 
--   ![](https://jason-fox.github.io/tutorials.Application-Mashup/img/ngsi-browser-widget.png)
+-   ![](https://fiware.github.io/tutorials.Application-Mashup/img/ngsi-browser-widget.png)
 
 Clicking on the **+** button will add an unconfigured NGSI Browser on screen
 
@@ -443,22 +443,22 @@ The next step is to configure the widget. Click on the wiring button to switch
 to the wiring view, and select **Widgets** from the components sidebar.
 Scrolling down to the NGSI browser shows an available widget in orange
 
-![](https://jason-fox.github.io/tutorials.Application-Mashup/img/ngsi-browser-wiring.png)
+![](https://fiware.github.io/tutorials.Application-Mashup/img/ngsi-browser-wiring.png)
 
 Clicking on the orange button brings up the settings to configure. Select the
 hamburger to obtain a dropdown and click on settings to configure as shown:
 
-![](https://jason-fox.github.io/tutorials.Application-Mashup/img/ngsi-browser-settings.png)
+![](https://fiware.github.io/tutorials.Application-Mashup/img/ngsi-browser-settings.png)
 
 Then click on **Accept**
 
 Click on the back button to return to the workspace view.
 
-![](https://jason-fox.github.io/tutorials.Application-Mashup/img/back-button.png)
+![](https://fiware.github.io/tutorials.Application-Mashup/img/back-button.png)
 
 The NGSI browser should be displaying live data as shown:
 
-![](https://jason-fox.github.io/tutorials.Application-Mashup/img/ngsi-browser-ui.png)
+![](https://fiware.github.io/tutorials.Application-Mashup/img/ngsi-browser-ui.png)
 
 ## Combining Multiple Widgets within a Mashup
 
@@ -473,7 +473,7 @@ minimal understanding of the technologies used to create the mashup.
 From the workspace page, click on edit and then click on the jigsaw button to
 bring up the wiring editor view.
 
-![](https://jason-fox.github.io/tutorials.Application-Mashup/img/add-components.png)
+![](https://fiware.github.io/tutorials.Application-Mashup/img/add-components.png)
 
 Then click on add components to bring up the components sidebar. We will require
 a combination of both **Operators** and **Widgets**
@@ -488,16 +488,16 @@ Widget and drag it onto the wiring editor view.
 
 | Operators | Widgets |
 | --------- | ------- |
-| ![](https://jason-fox.github.io/tutorials.Application-Mashup/img/operators-list.png) | ![](https://jason-fox.github.io/tutorials.Application-Mashup/img/components-widgets.png)|
+| ![](https://fiware.github.io/tutorials.Application-Mashup/img/operators-list.png) | ![](https://fiware.github.io/tutorials.Application-Mashup/img/components-widgets.png)|
 
 The result is a series of unconnected components on screen.
 
-![](https://jason-fox.github.io/tutorials.Application-Mashup/img/osm-unwired.png)
+![](https://fiware.github.io/tutorials.Application-Mashup/img/osm-unwired.png)
 
 Hovering over the connectors will give more information about the available
 inputs and outputs. Click and drag to connect the elements as shown.
 
-![](https://jason-fox.github.io/tutorials.Application-Mashup/img/osm-wired.png)
+![](https://fiware.github.io/tutorials.Application-Mashup/img/osm-wired.png)
 
 You can see that flow of data can be visualized on screen, in the mashup we wish
 to display Points of Interest (_POIs_) on screen. In order to do this we will
@@ -519,11 +519,11 @@ application under the **My Resources** screen:
 To configure the component, click on the _NSGI Source_ hamburger button and
 select settings:
 
-![](https://jason-fox.github.io/tutorials.Application-Mashup/img/ngsi-source-wiring.png)
+![](https://fiware.github.io/tutorials.Application-Mashup/img/ngsi-source-wiring.png)
 
 Amend the settings as shown below and click accept.
 
-![](https://jason-fox.github.io/tutorials.Application-Mashup/img/ngsi-source-settings.png)
+![](https://fiware.github.io/tutorials.Application-Mashup/img/ngsi-source-settings.png)
 
 -   The NGSI server needs to be the location of the Orion Context broker
 -   The NGSI proxy is used to bypass CORS issues when accessing webservices
@@ -550,11 +550,11 @@ application under the **My Resources** screen:
 To configure the component, click on the _NGSI Entity to POI_ hamburger button
 and select settings:
 
-![](https://jason-fox.github.io/tutorials.Application-Mashup/img/ngsi-to-poi-wiring.png)
+![](https://fiware.github.io/tutorials.Application-Mashup/img/ngsi-to-poi-wiring.png)
 
 Amend the coordinates setting as shown below and click accept.
 
-![](https://jason-fox.github.io/tutorials.Application-Mashup/img/ngsi-to-poi-settings.png)
+![](https://fiware.github.io/tutorials.Application-Mashup/img/ngsi-to-poi-settings.png)
 
 According to the FIWARE Data Models
 [Guidelines](https://fiware-datamodels.readthedocs.io/en/latest/guidelines/index.html#modelling-location)
@@ -577,11 +577,11 @@ application under the **My Resources** screen:
 To configure the component, click on the _Open Layers Map_ hamburger button and
 select settings:
 
-![](https://jason-fox.github.io/tutorials.Application-Mashup/img/osm-wiring.png)
+![](https://fiware.github.io/tutorials.Application-Mashup/img/osm-wiring.png)
 
 Amend the settings as shown below and click accept.
 
--   ![](https://jason-fox.github.io/tutorials.Application-Mashup/img/osm-settings.png)
+-   ![](https://fiware.github.io/tutorials.Application-Mashup/img/osm-settings.png)
 
 The Store Data is found in Berlin. This city is located at 52.53N 13.4E. The the
 initial location setting is defined in Long/Lat format. The other settings help
@@ -592,11 +592,11 @@ necessary).
 
 `http://localhost:8000/alice/test#view=workspace&tab=tab`
 
-![](https://jason-fox.github.io/tutorials.Application-Mashup/img/osm-map-result.png)
+![](https://fiware.github.io/tutorials.Application-Mashup/img/osm-map-result.png)
 
 Clicking on the POIs retrieves additional data from each stores.
 
--   ![](https://jason-fox.github.io/tutorials.Application-Mashup/img/osm-map-on-click.png)
+-   ![](https://fiware.github.io/tutorials.Application-Mashup/img/osm-map-on-click.png)
 
 Currently the data is displayed as unformatted JSON. This is because the `Store`
 context data entities with the tutorial example are not using a standard FIWARE
