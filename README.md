@@ -488,12 +488,7 @@ Widget and drag it onto the wiring editor view.
 
 | Operators | Widgets |
 | --------- | ------- |
-
-
-|
-![](https://jason-fox.github.io/tutorials.Application-Mashup/img/operators-list.png)
-|
-![](https://jason-fox.github.io/tutorials.Application-Mashup/img/components-widgets.png)|
+| ![](https://jason-fox.github.io/tutorials.Application-Mashup/img/operators-list.png) | ![](https://jason-fox.github.io/tutorials.Application-Mashup/img/components-widgets.png)|
 
 The result is a series of unconnected components on screen.
 
@@ -518,7 +513,7 @@ obtain real time notifications about changes on the entities of interest. It is
 an example of a data source component.
 
 Full details of the operator documentation can be found within the running
-application here:
+application under the **My Resources** screen:
 `http://localhost:8000/wirecloud/home#view=myresources&subview=details&resource=CoNWeT%2Fngsi-source%2F4.0.0&tab=Documentation`
 
 To configure the component, click on the _NSGI Source_ hamburger button and
@@ -549,7 +544,7 @@ bubbles of the PoIs created by this operator will be a mere composition of the
 attribute/value pairs.
 
 Full details of the operator documentation can be found within the running
-application here:
+application under the **My Resources** screen:
 `http://localhost:8000/wirecloud/home#view=myresources&subview=details&resource=CoNWeT%2Fngsientity2poi%2F3.1.2&tab=Documentation`
 
 To configure the component, click on the _NGSI Entity to POI_ hamburger button
@@ -576,7 +571,7 @@ component. Open Layers is a free, open-source JavaScript library, released under
 the [2-clause BSD License](https://opensource.org/licenses/BSD-2-Clause)
 
 Full details of the widget documentation can be found within the running
-application here:
+application under the **My Resources** screen:
 `http://localhost:8000/wirecloud/home#view=myresources&subview=details&resource=CoNWeT%2Fol3-map%2F1.1.2&tab=Documentation`
 
 To configure the component, click on the _Open Layers Map_ hamburger button and
