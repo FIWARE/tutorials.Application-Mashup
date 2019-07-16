@@ -312,9 +312,7 @@ Clicking on upload will add the resources to **Wirecloud**.
 Just click on any available widget to obtain a summary of the widget's usage. More details about the available inputs
 and outputs and how to wire up each widget can do can be found in the widget's documentation.
 
-To return to the homepage, click on the back button
-
-![](https://fiware.github.io/tutorials.Application-Mashup/img/back-button.png)
+To return to the homepage, click on the back button: ![](https://fiware.github.io/tutorials.Application-Mashup/img/back-button.png)
 
 ## Creating a Workspace
 
@@ -336,9 +334,7 @@ workspace can be selected on click
 
 ![](https://fiware.github.io/tutorials.Application-Mashup/img/selecting-a-workspace.png)
 
-You can return to the homepage by selecting the back button.
-
-![](https://fiware.github.io/tutorials.Application-Mashup/img/back-button.png)
+You can return to the homepage by selecting the back button: ![](https://fiware.github.io/tutorials.Application-Mashup/img/back-button.png)
 
 # Creating Application Mashups
 
@@ -391,9 +387,7 @@ on settings to configure as shown:
 
 Then click on **Accept**
 
-Click on the back button to return to the workspace view.
-
-![](https://fiware.github.io/tutorials.Application-Mashup/img/back-button.png)
+Click on the back button to return to the workspace view: ![](https://fiware.github.io/tutorials.Application-Mashup/img/back-button.png)
 
 The NGSI browser should be displaying live data as shown:
 
