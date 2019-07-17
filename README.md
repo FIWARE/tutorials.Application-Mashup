@@ -17,6 +17,8 @@ architectures.
 
 Additional materials covering how to develop and create your own widgets will be the subject of a later tutorial.
 
+-   このチュートリアルは[日本語](README.ja.md)でもご覧いただけます。
+
 ## Contents
 
 <details>
@@ -326,7 +328,7 @@ Fill in the dialog as shown to create an empty workspace.
 
 ![](https://fiware.github.io/tutorials.Application-Mashup/img/create-workspace.png)
 
-Tthe workspace will open. The URL in the browser bar will alter to `http://localhost:8000/<user>/<workspace>`.
+The workspace will open. The URL in the browser bar will alter to `http://localhost:8000/<user>/<workspace>`.
 
 ![](https://fiware.github.io/tutorials.Application-Mashup/img/workspace.png)
 
@@ -350,7 +352,7 @@ More complex mashups will consist of a series of widgets and operations linked t
 The _Hello World_ of Wirecloud components involves adding a single browser widget on screen and then configuring it to
 display some context data.
 
-As you would expect, this tutorial relies on context data from the context broeker. To ensure that the IoT devices are
+As you would expect, this tutorial relies on context data from the context broker. To ensure that the IoT devices are
 running, open the tutorial application (`http://localhost:3000/`) in a new browser window. Log in as
 `bob-the-manager@test.com` with the password `test` and click on device monitor. Bob can switch on the lamp to obtain
 some context data for the mashup.
