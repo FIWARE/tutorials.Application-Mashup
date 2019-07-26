@@ -111,7 +111,7 @@ WireCloud の全体的な目的は、プログラミングの知識がなくて�
 -   Linux に Docker をインストールするには、[こちら](https://docs.docker.com/install/)の手順に従ってください
 
 **Docker Compose** は、マルチコンテナ Docker アプリケーションを定義して実行するためのツールです。
-[YAMLファイル](https://raw.githubusercontent.com/Fiware/tutorials.Identity-Management/master/docker-compose.yml)
+[YAMLファイル](https://raw.githubusercontent.com/Fiware/tutorials.Application-Mashup/master/docker-compose.yml)
 を使用して、アプリケーションに必要なサービスを設定します。これは、すべてのコンテナ・サービスを単一のコマンドで起動
 できることを意味します。Docker Compose は、Docker for Windows および Docker for Mac の一部としてデフォルトでインストール
 されますが、Linux ユーザは[こちら](https://docs.docker.com/compose/install/)にある手順に従う必要があります。
