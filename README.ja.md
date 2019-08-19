@@ -148,7 +148,7 @@ WireCloud の全体的な目的は、プログラミングの知識がなくて�
     FIWARE [Orion Context Broker](https://fiware-orion.readthedocs.io/en/latest/)
 -   [NGSI](https://fiware.github.io/) を使用してサウスバウンドのリクエストを受信し、それらをデバイス用の
     [UltraLight 2.0](https://fiware-iotagent-ul.readthedocs.io/en/latest/usermanual/index.html#user-programmers-manual)
-    コマンドに変換する FIWARE [IoT Agent for UltraLight 2.0](https://fiware-iotagent-ul.readthedocs.io/en/latest/) 
+    コマンドに変換する FIWARE [IoT Agent for UltraLight 2.0](https://fiware-iotagent-ul.readthedocs.io/en/latest/)
 -   FIWARE [Keyrock](https://fiware-idm.readthedocs.io/en/latest/) ID 管理システム
     -   **在庫管理システム**と **WireCloud** の両方で使用
 -   NGSIエンティティを表示するための FIWARE [WireCloud](https://wirecloud.readthedocs.io/en/stable/) アプリケーション・
@@ -174,7 +174,7 @@ WireCloud の全体的な目的は、プログラミングの知識がなくて�
     Web サーバです - 特定のリソースへのアクセスが制限されています
 -  **WireCloud** では、3つの追加マイクロサービスが使用されています :
     -  [Memcache](https://memcached.org) は、汎用の分散メモリ・キャッシュ。システムです
-    -  [ElasticSearch](https://elastic.co/products/elasticsearch) は、全文検索エンジンです
+    -  [ElasticSearch](https://www.elastic.co/products/elasticsearch) は、全文検索エンジンです
     -  [NGSI Proxy](https://github.com/conwetlab/ngsi-proxy) は、**Orion** からの通知を Web ページにリダイレクトする
        ことができるサーバです
 
