@@ -61,7 +61,7 @@ visualizations, and add further information as necessary.
 
 An **application mashup** is a web application which uses content from multiple sources to display a single new service
 with a graphical interface. Most mashups are visual and interactive by design, and many are short-lived representations
-which are only required to help analyse a single problem.
+which are only required to help analyse a single problem.<sup>[1](#footnote1)</sup>
 
 The [FIWARE Wirecloud](https://Wirecloud.rtfd.io) Generic Enabler is a tool which helps users to rapidly generate new
 application mashups based on NGSI and other data sources. To speed up development, the Wirecloud architecture has been
@@ -532,3 +532,11 @@ the other [tutorials in this series](https://fiware-tutorials.rtfd.io)
 ## License
 
 [MIT](LICENSE) © 2019 FIWARE Foundation e.V.
+
+---
+
+### Footnotes
+
+<a name="footnote1"></a>
+
+-   [Wikipedia: Mashup](https://en.wikipedia.org/wiki/Mashup_%28web_application_hybrid%29) - a web application that uses content from more than one source
