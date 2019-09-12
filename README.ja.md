@@ -66,7 +66,7 @@ Generic Enabler の視覚化ツールです。このチュートリアルでは�
 
 **アプリケーション・マッシュアップ**は、複数のソースからのコンテンツを使用してグラフィカル・インターフェイスで単一の
 新しいサービスを表示する Web アプリケーションです。ほとんどのマッシュアップは設計上、視覚的で対話式であり、多くは短命の
-表現 (short-lived representations) であり、単一の問題を分析するためにのみ必要です。
+表現 (short-lived representations) であり、単一の問題を分析するためにのみ必要です。<sup>[1](#footnote1)</sup>
 
 [FIWARE WireCloud](https://Wirecloud.rtfd.io) Generic Enabler は、ユーザが NGSI やその他のデータソースに基づいて新しい
 アプリケーション・マッシュアップを迅速に生成するのに役立つツールです。開発をスピードアップするために、WireCloud
@@ -587,3 +587,11 @@ POIs をクリックすると、各店舗から追加のデータが取得され
 ## License
 
 [MIT](LICENSE) © 2019 FIWARE Foundation e.V.
+
+---
+
+### 脚注
+
+<a name="footnote1"></a>
+
+-   [Wikipedia: Mashup](https://en.wikipedia.org/wiki/Mashup_%28web_application_hybrid%29) - 複数のソースからのコンテンツを使用するWebアプリケーション
