@@ -248,7 +248,7 @@ image: fiware/wirecloud
 インストールを開始するには、次の手順に従います :
 
 ```console
-git clone git@github.com:FIWARE/tutorials.Application-Mashup.git
+git clone https://github.com/FIWARE/tutorials.Application-Mashup.git
 cd tutorials.Application-Mashup
 
 ./services create

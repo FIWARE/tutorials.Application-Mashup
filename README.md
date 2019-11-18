@@ -233,7 +233,7 @@ The `wirecloud` container is connecting to **Keyrock** and is driven by environm
 To start the installation, do the following:
 
 ```console
-git clone git@github.com:FIWARE/tutorials.Application-Mashup.git
+git clone https://github.com/FIWARE/tutorials.Application-Mashup.git
 cd tutorials.Application-Mashup
 
 ./services create
@@ -539,4 +539,5 @@ the other [tutorials in this series](https://fiware-tutorials.rtfd.io)
 
 <a name="footnote1"></a>
 
--   [Wikipedia: Mashup](https://en.wikipedia.org/wiki/Mashup_%28web_application_hybrid%29) - a web application that uses content from more than one source
+-   [Wikipedia: Mashup](https://en.wikipedia.org/wiki/Mashup_%28web_application_hybrid%29) - a web application that uses
+    content from more than one source
