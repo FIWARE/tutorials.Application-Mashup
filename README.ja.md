@@ -38,7 +38,7 @@ Generic Enabler の視覚化ツールです。このチュートリアルでは�
 -   [マッシュアップ・アプリケーションの作成](#creating-application-mashups)
     -   [シンプル・マッシュアップの作成](#creating-a-simple-mashup)
         -   [ウィジェットとオペレータの選択](#selecting-widgets)
-        -   [NSGI Browser Widget](#nsgi-browser-widget)
+        -   [NGSI Browser Widget](#ngsi-browser-widget)
     -   [マッシュアップ内の複数のウィジェットの結合](#combining-multiple-widgets-within-a-mashup)
         -   [ウィジェットとオペレータの選択](#selecting-widgets-and-operators)
         -   [NGSI Source Operator](#ngsi-source-operator)
@@ -400,9 +400,9 @@ WireCloud コンポーネントの _Hello World_ では、画面に単一のブ�
 
 Components のサイドバーが表示されます
 
-<a name="nsgi-browser-widget"></a>
+<a name="ngsi-browser-widget"></a>
 
-### NSGI Browser Widget
+### NGSI Browser Widget
 
 ビジュアル・コンポーネントが必要なので、Components のサイドバーで **Widgets** を選択し、NGSI Browser
 が見つかるまで下にスクロールします
@@ -455,7 +455,7 @@ NGSI Browser は次のようにライブ・データを表示しているはず�
 次に、Add components をクリックしてComponents のサイドバーを表示します。**Operators** と **Widgets**
 の両方の組み合わせが必要になります
 
-**operators** タブをクリックし、**+** ボタンを押して _NSGI Source_ のインスタンスと _NGSI-Entity-to-POI_ の
+**operators** タブをクリックし、**+** ボタンを押して _NGSI Source_ のインスタンスと _NGSI-Entity-to-POI_ の
 インスタンスを選択します。各エントリの下に緑色のバーが表示され、それらをワイヤリング・エディタ・ビューに
 ドラッグ・アンド・ドロップできます。
 
@@ -476,7 +476,7 @@ NGSI Browser は次のようにライブ・データを表示しているはず�
 ![](https://fiware.github.io/tutorials.Application-Mashup/img/osm-wired.png)
 
 画面にデータの流れを視覚化できることがわかります。マッシュアップでは、関心のあるポイント (_POIs_) を画面に表示します。
-これを行うために、NSGI source からデータ _entities_ を受け取ります。各 _entity_ からのデータは _POI_ に変換されます。
+これを行うために、NGSI source からデータ _entities_ を受け取ります。各 _entity_ からのデータは _POI_ に変換されます。
 最後に各 _POI_ が _OpenLayers Map_ に挿入されます。
 
 <a name="ngsi-source-operator"></a>
@@ -490,7 +490,7 @@ _NGSI Source_ オペレータを使用すると、Orion Context Broker に接続
 オペレータのドキュメントの詳細は、**My Resources** 画面の実行中のアプリケーション内にあります :
 `http://localhost:8000/wirecloud/home#view=myresources&subview=details&resource=CoNWeT%2Fngsi-source%2F4.0.0&tab=Documentation`
 
-コンポーネントを設定するには、_NSGI Source_ のハンバーガー・ボタンをクリックし、Settings を選択します :
+コンポーネントを設定するには、_NGSI Source_ のハンバーガー・ボタンをクリックし、Settings を選択します :
 
 ![](https://fiware.github.io/tutorials.Application-Mashup/img/ngsi-source-wiring.png)
 
@@ -570,7 +570,7 @@ POIs をクリックすると、各店舗から追加のデータが取得され
 現在データはフォーマットされていない JSON として表示されています。これは、チュートリアル例の `Store`
 コンテキスト・データのエンティティが標準の FIWARE データモデルを使用していないためです。
 [Building](https://fiware-datamodels.readthedocs.io/en/latest/Building/Building/doc/spec/index.html)
-などの標準データモデルが使用されていた場合、データは適切な形式でフォーマットされま、**Building**
+などの標準データモデルが使用されていた場合、データは適切な形式でフォーマットされ、**Building**
 固有のアイコンが使用されます。
 
 <a name="next-steps"></a>
