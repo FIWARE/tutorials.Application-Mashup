@@ -7,11 +7,7 @@
 set -e
 
 
-curl () {
-  docker run --network fiware_default --rm appropriate/curl -s -o /dev/null \
-    "$@"
-  printf "."
-}
+
 
 
 printf "⏳ Provisioning IoT devices "
@@ -21,7 +17,7 @@ printf "⏳ Provisioning IoT devices "
 # Create a service group for all UltraLight IoT devices
 #
 
-curl -X POST \
+curl -s -o /dev/null -X POST \
   'http://iot-agent:4041/iot/services' \
   -H 'Content-Type: application/json' \
   -H 'fiware-service: openiot' \
@@ -43,7 +39,7 @@ curl -X POST \
 # Provision motion sensor 001
 #
 
-curl -X POST \
+curl -s -o /dev/null -X POST \
   'http://iot-agent:4041/iot/devices' \
   -H 'Content-Type: application/json' \
   -H 'fiware-service: openiot' \
@@ -157,7 +153,7 @@ curl -X POST \
 # Provision motion sensor 002
 #
 
-curl -X POST \
+curl -s -o /dev/null -X POST \
   'http://iot-agent:4041/iot/devices' \
   -H 'Content-Type: application/json' \
   -H 'fiware-service: openiot' \
@@ -265,7 +261,7 @@ curl -X POST \
 # Provision motion sensor 003
 #
 
-curl -X POST \
+curl -s -o /dev/null -X POST \
   'http://iot-agent:4041/iot/devices' \
   -H 'Content-Type: application/json' \
   -H 'fiware-service: openiot' \
@@ -372,7 +368,7 @@ curl -X POST \
 # Provision motion sensor 004
 #
 
-curl -X POST \
+curl -s -o /dev/null -X POST \
   'http://iot-agent:4041/iot/devices' \
   -H 'Content-Type: application/json' \
   -H 'fiware-service: openiot' \
