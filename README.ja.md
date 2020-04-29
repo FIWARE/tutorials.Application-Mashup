@@ -145,7 +145,7 @@ WireCloud の全体的な目的は、プログラミングの知識がなくて�
 
 したがって、アーキテクチャ全体は次の要素で構成されます :
 
--   [NGSI](https://fiware.github.io/specifications/OpenAPI/ngsiv2) を使用してリクエストを受信する
+-   [NGSI-v2](https://fiware.github.io/specifications/OpenAPI/ngsiv2) を使用してリクエストを受信する
     FIWARE [Orion Context Broker](https://fiware-orion.readthedocs.io/en/latest/)
 -   [NGSI](https://fiware.github.io/) を使用してサウスバウンドのリクエストを受信し、それらをデバイス用の
     [UltraLight 2.0](https://fiware-iotagent-ul.readthedocs.io/en/latest/usermanual/index.html#user-programmers-manual)
