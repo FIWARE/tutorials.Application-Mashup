@@ -251,6 +251,7 @@ image: fiware/wirecloud
 ```console
 git clone https://github.com/FIWARE/tutorials.Application-Mashup.git
 cd tutorials.Application-Mashup
+git checkout NGSI-v2
 
 ./services create
 ```
