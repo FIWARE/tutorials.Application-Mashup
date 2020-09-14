@@ -172,7 +172,7 @@ WireCloud の全体的な目的は、プログラミングの知識がなくて�
     - ユーザが製品を "購入" し、在庫数を減らすことができます
 -   HTTP 経由で実行されている
     [UltraLight 2.0](https://fiware-iotagent-ul.readthedocs.io/en/latest/usermanual/index.html#user-programmers-manual)
-    プロトコルを使用する [ダミー IoT デバイス](https://github.com/FIWARE/tutorials.IoT-Sensors)のセットとして機能する
+    プロトコルを使用する [ダミー IoT デバイス](https://github.com/FIWARE/tutorials.IoT-Sensors/tree/NGSI-v2)のセットとして機能する
     Web サーバです - 特定のリソースへのアクセスが制限されています
 -  **WireCloud** では、3つの追加マイクロサービスが使用されています :
     -  [Memcache](https://memcached.org) は、汎用の分散メモリ・キャッシュ。システムです
