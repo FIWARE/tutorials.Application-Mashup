@@ -259,7 +259,7 @@ git checkout NGSI-v2
 
 > **注 :** Docker イメージの初期作成には最大3分かかることがあります
 
-その後、リポジトリ内の [services](https://github.com/FIWARE/tutorials.Application-Mashup/blob/master/services)
+その後、リポジトリ内の [services](https://github.com/FIWARE/tutorials.Application-Mashup/blob/NGSI-v2/services)
 Bash スクリプトを実行して、すべてのサービスをコマンドラインから初期化できます :
 
 ```console
