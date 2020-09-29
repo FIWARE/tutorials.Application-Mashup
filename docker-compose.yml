@@ -128,7 +128,8 @@ services:
           - "${TUTORIAL_APP_PORT}:${TUTORIAL_APP_PORT}" # localhost:3000
           - "${TUTORIAL_DUMMY_DEVICE_PORT}:${TUTORIAL_DUMMY_DEVICE_PORT}" # localhost:3001
         environment:
-          - "DEBUG=tutorial:*"
+          - "MONGO_URL=mongodb://mongo-db:27017"
+      - "DEBUG=tutorial:*"
           - "WEB_APP_PORT=${TUTORIAL_APP_PORT}" # Port used by the content provider proxy and web-app for viewing data
           - "IOTA_HTTP_HOST=iot-agent"
           - "IOTA_HTTP_PORT=${IOTA_SOUTH_PORT}"
