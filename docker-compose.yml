@@ -10,7 +10,7 @@ services:
             - "${WIRECLOUD_PORT}:${WIRECLOUD_PORT}" # localhost:8000
         networks:
           default:
-            ipv4_address: 172.18.1.10
+            ipv4_address: 172.20.199.10
 
         restart: always
         depends_on:
@@ -40,7 +40,7 @@ services:
         hostname: keyrock
         networks:
           default:
-            ipv4_address: 172.18.1.5
+            ipv4_address: 172.20.199.5
         depends_on:
             - mysql-db
         ports:
@@ -117,7 +117,7 @@ services:
           - keyrock
         networks:
           default:
-            ipv4_address: 172.18.1.7
+            ipv4_address: 172.20.199.7
             aliases:
               - iot-sensors
               - context-provider
@@ -129,7 +129,7 @@ services:
           - "${TUTORIAL_DUMMY_DEVICE_PORT}:${TUTORIAL_DUMMY_DEVICE_PORT}" # localhost:3001
         environment:
           - "MONGO_URL=mongodb://mongo-db:27017"
-      - "DEBUG=tutorial:*"
+          - "DEBUG=tutorial:*"
           - "WEB_APP_PORT=${TUTORIAL_APP_PORT}" # Port used by the content provider proxy and web-app for viewing data
           - "IOTA_HTTP_HOST=iot-agent"
           - "IOTA_HTTP_PORT=${IOTA_SOUTH_PORT}"
@@ -152,9 +152,6 @@ services:
           test: curl --fail -s http://tutorial:${TUTORIAL_APP_PORT}/version || exit 1
 
     # Databases
-
-
-
     postgres-db:
         image: postgres
         hostname: postgres-db
@@ -164,7 +161,7 @@ services:
           - "${POSTGRES_DB_PORT}:${POSTGRES_DB_PORT}"
         networks:
           default:
-            ipv4_address: 172.18.1.13
+            ipv4_address: 172.20.199.13
         environment:
             - POSTGRES_PASSWORD=wirepass   # Change this password!
         volumes:
@@ -181,7 +178,7 @@ services:
           - "${MYSQL_DB_PORT}:${MYSQL_DB_PORT}" # localhost:3306
         networks:
           default:
-            ipv4_address: 172.18.1.6
+            ipv4_address: 172.20.199.6
         environment:
           - "MYSQL_ROOT_PASSWORD_FILE=/run/secrets/my_secret_data"
           - "MYSQL_ROOT_HOST=172.18.1.5" # Allow Keyrock to access this database
@@ -212,7 +209,7 @@ services:
         container_name: wc-ngsi-proxy
         networks:
           default:
-            ipv4_address: 172.18.1.14
+            ipv4_address: 172.20.199.14
         expose:
             - "8100"
         ports:
@@ -229,7 +226,7 @@ services:
             - "9200:9200"
         networks:
           default:
-            ipv4_address: 172.18.1.12
+            ipv4_address: 172.20.199.12
 
         restart: always
         volumes:
@@ -244,7 +241,7 @@ services:
             - "11211:11211"
         networks:
           default:
-            ipv4_address: 172.18.1.11
+            ipv4_address: 172.20.199.11
 
         restart: always
         command: memcached -m 2048m
@@ -254,7 +251,7 @@ networks:
   default:
     ipam:
       config:
-        - subnet: 172.18.1.0/24
+        - subnet: 172.20.199.1/24
 
 volumes:
   mysql-db: ~
