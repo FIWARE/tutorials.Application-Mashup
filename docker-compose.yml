@@ -263,4 +263,4 @@ volumes:
 
 secrets:
     my_secret_data:
-        file: ./secrets.txtl
+        file: ./secrets.txt
