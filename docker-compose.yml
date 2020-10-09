@@ -129,7 +129,7 @@ services:
           - "${TUTORIAL_DUMMY_DEVICE_PORT}:${TUTORIAL_DUMMY_DEVICE_PORT}" # localhost:3001
         environment:
           - "MONGO_URL=mongodb://mongo-db:27017"
-      - "DEBUG=tutorial:*"
+          - "DEBUG=tutorial:*"
           - "WEB_APP_PORT=${TUTORIAL_APP_PORT}" # Port used by the content provider proxy and web-app for viewing data
           - "IOTA_HTTP_HOST=iot-agent"
           - "IOTA_HTTP_PORT=${IOTA_SOUTH_PORT}"
@@ -152,9 +152,6 @@ services:
           test: curl --fail -s http://tutorial:${TUTORIAL_APP_PORT}/version || exit 1
 
     # Databases
-
-
-
     postgres-db:
         image: postgres
         hostname: postgres-db
@@ -266,4 +263,4 @@ volumes:
 
 secrets:
     my_secret_data:
-        file: ./secrets.txt
+        file: ./secrets.txtl
