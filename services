@@ -14,14 +14,31 @@ if (( $# != 1 )); then
 fi
 
 loadData () {
+	export CONTEXT_BROKER="$1" 
+	addDatabaseIndex
+	waitForContext
+	waitForOrion
 	docker run --rm -v $(pwd)/import-data:/import-data \
 		--network fiware_default \
+		-e CONTEXT_BROKER=${CONTEXT_BROKER} \
+		-e TUTORIAL_DATA_MODELS_CONTEXT="http://context-provider:3000/data-models/ngsi-context.jsonld" \
 		--entrypoint /bin/ash curlimages/curl import-data
 	waitForIoTAgent
 	docker run --rm -v $(pwd)/provision-devices:/provision-devices \
 		--network fiware_default \
+		-e CONTEXT_BROKER=${CONTEXT_BROKER} \
+		-e TUTORIAL_DATA_MODELS_CONTEXT="http://context-provider:3000/data-models/ngsi-context.jsonld" \
 		--entrypoint /bin/ash curlimages/curl provision-devices
 	echo ""
+}
+
+waitForContext () {
+	echo -e "\n⏳ Waiting for \033[1m@context\033[0m to be available\n"
+	while [ `docker run --network fiware_default --rm curlimages/curl -s -o /dev/null -w %{http_code} 'http://context-provider:3000/data-models/ngsi-context.jsonld'` -eq 000 ]
+	do 
+	  echo -e "@context HTTP state: " `curl -s -o /dev/null -w %{http_code} 'http://context-provider:3000/data-models/ngsi-context.jsonld'` " (waiting for 200)"
+	  sleep 1
+	done
 }
 
 waitForKeyrock () {
@@ -127,9 +144,7 @@ case "${command}" in
 		echo -e "- \033[1;35mWirecloud\033[0m is a Dashboard Utility"
 		echo -e "- \033[1;35mNGSI Proxy\033[0m creates a server that is capable of redirecting Orion notifications to web pages"
 		startContainers false
-		addDatabaseIndex
-		waitForOrion
-		loadData
+		loadData orion:1026
 		waitForWirecloud
 		waitForKeyrock
 		echo -e "Now open \033[4mhttp://localhost:8000\033[0m"
