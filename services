@@ -125,7 +125,8 @@ case "${command}" in
 	"help")
         echo "usage: services [create|start|stop]"
         ;;
-    "start")
+	"start")
+		export $(cat .env | grep "#" -v)
 		stoppingContainers
 		echo -e "Starting ten containers \033[1;34mOrion\033[0m, \033[1;36mIoT-Agent\033[0m, \033[1;31mKeyrock\033[0m, \033[1;35mWirecloud\033[0m, \033[1mTutorial\033[0m"
 		echo -e "Along with the following databases: \033[1mMongoDB\033[0m, \033[1mPostGres\033[0m and \033[1mMySQL\033[0m"
@@ -146,9 +147,11 @@ case "${command}" in
 		echo -e "Now open \033[4mhttp://localhost:8000\033[0m"
 		;;
 	"stop")
+		export $(cat .env | grep "#" -v)
 		stoppingContainers
 		;;
 	"create")
+		export $(cat .env | grep "#" -v)
 		echo "Pulling Docker images"
 		docker-compose --log-level ERROR -p fiware pull
 		;;
