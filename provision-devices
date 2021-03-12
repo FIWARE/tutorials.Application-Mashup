@@ -67,7 +67,7 @@ curl -s -o /dev/null -X POST \
    {
      "apikey":      "854782081",
      "cbroker":     "http://orion:1026",
-     "entity_type": "FillingSensor",
+     "entity_type": "FillingLevelSensor",
      "resource":    "/iot/d",
      "protocol":    "PDI-IoTA-UltraLight",
      "transport":   "HTTP",
@@ -195,7 +195,7 @@ curl -s -o /dev/null -X POST \
      "entity_name": "urn:ngsi-ld:Device:temperature001",
      "entity_type": "TemperatureSensor",
      "static_attributes": [
-         {"name": "controllingAsset", "type": "Relationship","value": "urn:ngsi-ld:Building:farm001"}
+         {"name": "controlledAsset", "type": "Relationship","value": "urn:ngsi-ld:Building:farm001"}
      ]
    },
    {
@@ -204,16 +204,17 @@ curl -s -o /dev/null -X POST \
       "entity_type": "Water",
       "endpoint": "http://context-provider:3001/iot/water001",
       "static_attributes": [
-        {"name": "controllingAsset", "type": "Relationship","value": "urn:ngsi-ld:Building:barn001"}
+        {"name": "controlledAsset", "type": "Relationship","value": "urn:ngsi-ld:Building:farm001"}
       ]
     },
     {
       "device_id": "filling001",
       "entity_name": "urn:ngsi-ld:Device:filling001",
-      "entity_type": "FillingSensor",
+      "entity_type": "FillingLevelSensor",
       "endpoint": "http://context-provider:3001/iot/filling001",
       "static_attributes": [
-        {"name": "controllingAsset", "type": "Relationship","value": "urn:ngsi-ld:Building:farm001"}
+        {"name": "controlledAsset", "type": "Relationship","value": "urn:ngsi-ld:Building:farm001"},
+        {"name": "location", "type": "GeoProperty", "value": [13.3505, 52.5144]}
       ]
     }, 
     {
@@ -222,10 +223,168 @@ curl -s -o /dev/null -X POST \
       "entity_type": "Tractor",
       "endpoint": "http://context-provider:3001/iot/tractor001",
       "static_attributes": [
-          {"name": "controllingAsset", "type": "Relationship","value": "urn:ngsi-ld:Building:farm001"}
+          {"name": "controlledAsset", "type": "Relationship","value": "urn:ngsi-ld:Building:farm001"}
       ]
     }
   ]
 }
 '
+
+####################################################
+#
+# Provision actuators for Farm 002
+#
+
+curl -s -o /dev/null -X POST \
+  'http://iot-agent:4041/iot/devices' \
+  -H 'Content-Type: application/json' \
+  -H 'fiware-service: openiot' \
+  -H 'fiware-servicepath: /' \
+  -d '{
+ "devices": [
+   {
+     "device_id":   "temperature002",
+     "entity_name": "urn:ngsi-ld:Device:temperature002",
+     "entity_type": "TemperatureSensor",
+     "static_attributes": [
+         {"name": "controlledAsset", "type": "Relationship","value": "urn:ngsi-ld:Building:barn002"}
+     ]
+   },
+   {
+      "device_id": "water002",
+      "entity_name": "urn:ngsi-ld:Device:water002",
+      "entity_type": "Water",
+      "endpoint": "http://context-provider:3001/iot/water002",
+      "static_attributes": [
+        {"name": "controlledAsset", "type": "Relationship","value": "urn:ngsi-ld:Building:barn002"}
+      ]
+    },
+    {
+      "device_id": "filling002",
+      "entity_name": "urn:ngsi-ld:Device:filling002",
+      "entity_type": "FillingLevelSensor",
+      "endpoint": "http://context-provider:3001/iot/filling002",
+      "static_attributes": [
+        {"name": "controlledAsset", "type": "Relationship","value": "urn:ngsi-ld:Building:barn002"},
+        {"name": "location", "type": "GeoProperty", "value": [13.3698, 52.5163]}
+      ]
+    }, 
+    {
+      "device_id": "tractor002",
+      "entity_name": "urn:ngsi-ld:Device:tractor002",
+      "entity_type": "Tractor",
+      "endpoint": "http://context-provider:3001/iot/tractor002",
+      "static_attributes": [
+          {"name": "controlledAsset", "type": "Relationship","value": "urn:ngsi-ld:Building:barn002"}
+      ]
+    }
+  ]
+}
+'
+
+####################################################
+#
+# Provision actuators for Farm 003
+#
+
+curl -s -o /dev/null -X POST \
+  'http://iot-agent:4041/iot/devices' \
+  -H 'Content-Type: application/json' \
+  -H 'fiware-service: openiot' \
+  -H 'fiware-servicepath: /' \
+  -d '{
+ "devices": [
+   {
+     "device_id":   "temperature003",
+     "entity_name": "urn:ngsi-ld:Device:temperature003",
+     "entity_type": "TemperatureSensor",
+     "static_attributes": [
+         {"name": "controlledAsset", "type": "Relationship","value": "urn:ngsi-ld:Building:tower003"}
+     ]
+   },
+   {
+      "device_id": "water003",
+      "entity_name": "urn:ngsi-ld:Device:water003",
+      "entity_type": "Water",
+      "endpoint": "http://context-provider:3001/iot/water003",
+      "static_attributes": [
+        {"name": "controlledAsset", "type": "Relationship","value": "urn:ngsi-ld:Building:tower003"}
+      ]
+    },
+    {
+      "device_id": "filling003",
+      "entity_name": "urn:ngsi-ld:Device:filling003",
+      "entity_type": "FillingLevelSensor",
+      "endpoint": "http://context-provider:3001/iot/filling003",
+      "static_attributes": [
+        {"name": "controlledAsset", "type": "Relationship","value": "urn:ngsi-ld:Building:tower003"},
+        {"name": "location", "type": "GeoProperty", "value": [13.3598, 52.5165]}
+      ]
+    }, 
+    {
+      "device_id": "tractor003",
+      "entity_name": "urn:ngsi-ld:Device:tractor003",
+      "entity_type": "Tractor",
+      "endpoint": "http://context-provider:3001/iot/tractor003",
+      "static_attributes": [
+          {"name": "controlledAsset", "type": "Relationship","value": "urn:ngsi-ld:Building:tower003"}
+      ]
+    }
+  ]
+}
+'
+
+####################################################
+#
+# Provision actuators for Farm 004
+#
+
+curl -s -o /dev/null -X POST \
+  'http://iot-agent:4041/iot/devices' \
+  -H 'Content-Type: application/json' \
+  -H 'fiware-service: openiot' \
+  -H 'fiware-servicepath: /' \
+  -d '{
+ "devices": [
+   {
+     "device_id":   "temperature004",
+     "entity_name": "urn:ngsi-ld:Device:temperature004",
+     "entity_type": "TemperatureSensor",
+     "static_attributes": [
+         {"name": "controlledAsset", "type": "Relationship","value": "urn:ngsi-ld:Building:farm002"}
+     ]
+   },
+   {
+      "device_id": "water004",
+      "entity_name": "urn:ngsi-ld:Device:water004",
+      "entity_type": "Water",
+      "endpoint": "http://context-provider:3001/iot/water004",
+      "static_attributes": [
+        {"name": "controlledAsset", "type": "Relationship","value": "urn:ngsi-ld:Building:farm002"}
+      ]
+    },
+    {
+      "device_id": "filling004",
+      "entity_name": "urn:ngsi-ld:Device:filling004",
+      "entity_type": "FillingLevelSensor",
+      "endpoint": "http://context-provider:3001/iot/filling004",
+      "static_attributes": [
+        {"name": "controlledAsset", "type": "Relationship","value": "urn:ngsi-ld:Building:farm002"},
+        {"name": "location", "type": "GeoProperty", "value": [13.3127, 52.4893]}
+      ]
+    }, 
+    {
+      "device_id": "tractor004",
+      "entity_name": "urn:ngsi-ld:Device:tractor004",
+      "entity_type": "Tractor",
+      "endpoint": "http://context-provider:3001/iot/tractor004",
+      "static_attributes": [
+          {"name": "controlledAsset", "type": "Relationship","value": "urn:ngsi-ld:Building:farm002"}
+      ]
+    }
+  ]
+}
+'
+
+
 echo -e " \033[1;32mdone\033[0m"

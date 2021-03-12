@@ -13,38 +13,111 @@ if (( $# != 1 )); then
     exit 1
 fi
 
-loadData () {
-	export CONTEXT_BROKER="$1" 
-	addDatabaseIndex
-	waitForContext
-	waitForOrion
-	docker run --rm -v $(pwd)/import-data:/import-data \
-		--network fiware_default \
-		-e CONTEXT_BROKER=${CONTEXT_BROKER} \
-		-e TUTORIAL_DATA_MODELS_CONTEXT="http://context-provider:3000/data-models/ngsi-context.jsonld" \
-		--entrypoint /bin/ash curlimages/curl import-data
-	waitForIoTAgent
-	docker run --rm -v $(pwd)/provision-devices:/provision-devices \
-		--network fiware_default \
-		-e CONTEXT_BROKER=${CONTEXT_BROKER} \
-		-e TUTORIAL_DATA_MODELS_CONTEXT="http://context-provider:3000/data-models/ngsi-context.jsonld" \
-		--entrypoint /bin/ash curlimages/curl provision-devices
+SCORPIO="http://scorpio:9090/scorpio/v1/info/"
+ORION="http://orion:1026/version"
+CONTEXT="http://context-provider:3000/data-models/ngsi-context.jsonld"
+
+if (( $# != 1 )); then
+	echo "Illegal number of parameters"
+	echo "usage: services [create|orion|scorpio|stop]"
+	exit 1
+fi
+
+pause(){
+	printf " "
+	count="$1"
+	[ "$count" -gt 59 ] && printf "Waiting one minute " || printf " Waiting a few seconds ";
+	while [ "$count" -gt 0 ]
+	do
+		printf "."
+		sleep 3
+		count=$((count - 3))
+	done
 	echo ""
 }
+
+getHeartbeat(){
+	eval "response=$(docker run --network fiware_default --rm curlimages/curl -s -o /dev/null -w "%{http_code}" "$1")"
+}
+
+waitForOrion () {
+	echo -e "\n⏳ Waiting for \033[1;34mOrion-LD\033[0m to be available\n"
+	
+	while ! [ `docker inspect --format='{{.State.Health.Status}}' fiware-orion` == "healthy" ]
+	do
+		echo -e "\nContext Broker HTTP state: ${response} (waiting for 200)"
+		pause 6
+		getHeartbeat "${ORION}"
+	done
+}
+
+waitForScorpio () {
+	echo -e "\n⏳ Waiting for \033[1;34mScorpio\033[0m to respond\n"
+	getHeartbeat "${SCORPIO}"
+	while [ "${response}" -eq 000 ]
+	do
+		echo -e "Context Broker HTTP state: ${response} (waiting for 500)"
+		pause 60
+		getHeartbeat "${SCORPIO}"
+	done
+	echo -e "\n⏳ Waiting for all \033[1;34mScorpio\033[0m services to be fully available\n"
+	while [ "$response" -eq 500 ]
+	do
+		echo -e "Context Broker HTTP state: ${response} (waiting for 200)"
+		pause 60
+		getHeartbeat "${SCORPIO}"
+	done
+}
+
 
 waitForContext () {
 	echo -e "\n⏳ Waiting for \033[1m@context\033[0m to be available\n"
 	while [ `docker run --network fiware_default --rm curlimages/curl -s -o /dev/null -w %{http_code} 'http://context-provider:3000/data-models/ngsi-context.jsonld'` -eq 000 ]
 	do 
 	  echo -e "@context HTTP state: " `curl -s -o /dev/null -w %{http_code} 'http://context-provider:3000/data-models/ngsi-context.jsonld'` " (waiting for 200)"
-	  sleep 1
+	  sleep 3
 	done
+}
+
+waitForMongo () {
+	echo -e "\n⏳ Waiting for \033[1mMongoDB\033[0m to be available\n"
+	while ! [ `docker inspect --format='{{.State.Health.Status}}' db-mongo` == "healthy" ]
+	do 
+		sleep 1
+	done
+}
+
+waitForIoTAgent () {
+	echo -e "\n⏳ Waiting for \033[1;36mIoT-Agent\033[0m to be available\n"
+	while ! [ `docker inspect --format='{{.State.Health.Status}}' fiware-iot-agent` == "healthy" ]
+
+	do 
+	  echo -e "IoT Agent HTTP state: " `curl -s -o /dev/null -w %{http_code} 'http://localhost:4041/version'` " (waiting for 200)"
+	  sleep 6
+	done
+}
+
+loadData () {
+	export CONTEXT_BROKER="$1"
+	waitForContext
+	docker run --rm -v $(pwd)/import-data:/import-data \
+		--network fiware_default \
+		-e CONTEXT_BROKER=${CONTEXT_BROKER} \
+		-e TUTORIAL_DATA_MODELS_CONTEXT=${CONTEXT} \
+		--entrypoint /bin/ash curlimages/curl import-data
+	waitForIoTAgent
+	docker run --rm -v $(pwd)/provision-devices:/provision-devices \
+		--network fiware_default \
+		-e CONTEXT_BROKER=${CONTEXT_BROKER} \
+		-e TUTORIAL_DATA_MODELS_CONTEXT=${CONTEXT} \
+		--entrypoint /bin/ash curlimages/curl provision-devices
+	echo ""
 }
 
 waitForKeyrock () {
 	echo -e "⏳ Waiting for \033[1;31mKeyrock\033[0m to be available\n"
 	
-	while [ `curl -s -o /dev/null -w %{http_code} 'http://localhost:3005/version'` -eq 000 ]
+	while ! [ `docker inspect --format='{{.State.Health.Status}}' fiware-keyrock` == "healthy" ]
 	do 
 		echo -e "Keyrock HTTP state: " `curl -s -o /dev/null -w %{http_code} 'http://localhost:3005/version'` " (waiting for 200)"
 		sleep 5
@@ -63,23 +136,6 @@ waitForWirecloud () {
 	echo -e " \033[1;32mdone\033[0m"
 }
 
-waitForOrion () {
-	echo -e "\n⏳ Waiting for \033[1;34mOrion\033[0m to be available\n"
-	while [ `docker run --network fiware_default --rm curlimages/curl -s -o /dev/null -w %{http_code} 'http://orion:1026/version'` -eq 000 ]
-	do 
-	  echo -e "Context Broker HTTP state: " `curl -s -o /dev/null -w %{http_code} 'http://localhost:1026/version'` " (waiting for 200)"
-	  sleep 1
-	done
-}
-
-waitForIoTAgent () {
-	echo -e "\n⏳ Waiting for \033[1;36mIoT-Agent\033[0m to be available\n"
-	while [ `docker run --network fiware_default --rm curlimages/curl -s -o /dev/null -w %{http_code} 'http://iot-agent:4041/version'` -eq 000 ]
-	do 
-	  echo -e "IoT Agent HTTP state: " `curl -s -o /dev/null -w %{http_code} 'http://localhost:4041/version'` " (waiting for 200)"
-	  sleep 1
-	done
-}
 
 addDatabaseIndex () {
 	printf "Adding appropriate \033[1mMongoDB\033[0m indexes for \033[1;34mOrion\033[0m  ..."
@@ -132,7 +188,8 @@ case "${command}" in
 	"help")
         echo "usage: services [create|start|stop]"
         ;;
-    "start")
+	"start")
+		export $(cat .env | grep "#" -v)
 		stoppingContainers
 		echo -e "Starting ten containers \033[1;34mOrion\033[0m, \033[1;36mIoT-Agent\033[0m, \033[1;31mKeyrock\033[0m, \033[1;35mWirecloud\033[0m, \033[1mTutorial\033[0m"
 		echo -e "Along with the following databases: \033[1mMongoDB\033[0m, \033[1mPostGres\033[0m and \033[1mMySQL\033[0m"
@@ -144,15 +201,20 @@ case "${command}" in
 		echo -e "- \033[1;35mWirecloud\033[0m is a Dashboard Utility"
 		echo -e "- \033[1;35mNGSI Proxy\033[0m creates a server that is capable of redirecting Orion notifications to web pages"
 		startContainers false
+		waitForMongo
+		addDatabaseIndex
+		waitForOrion
 		loadData orion:1026
 		waitForWirecloud
 		waitForKeyrock
 		echo -e "Now open \033[4mhttp://localhost:8000\033[0m"
 		;;
 	"stop")
+		export $(cat .env | grep "#" -v)
 		stoppingContainers
 		;;
 	"create")
+		export $(cat .env | grep "#" -v)
 		echo "Pulling Docker images"
 		docker-compose --log-level ERROR -p fiware pull
 		;;
