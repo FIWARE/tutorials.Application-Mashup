@@ -531,7 +531,7 @@ _NGSI Entity to POI_ オペレータは、NGSI エンティティを POI (Point 
 ![](https://fiware.github.io/tutorials.Application-Mashup/img/ngsi-to-poi-settings.png)
 
 FIWARE データ・モデルの
-[ガイドライン](https://fiware-datamodels.readthedocs.io/en/latest/guidelines/index.html#modelling-location)
+[ガイドライン](https://smartdatamodels.org/)
 によれば、地理的座標には `location` という属性を使用する必要があります。座標は GeoJSON を使ってエンコードされるべき
 です。この規約はチュートリアル・データに使用されているので、ウィジェットは `Store` エンティティから場所を抽出する
 方法を知っています。
@@ -572,7 +572,7 @@ POIs をクリックすると、各店舗から追加のデータが取得され
 
 現在データはフォーマットされていない JSON として表示されています。これは、チュートリアル例の `Store`
 コンテキスト・データのエンティティが標準の FIWARE データモデルを使用していないためです。
-[Building](https://fiware-datamodels.readthedocs.io/en/latest/Building/Building/doc/spec/index.html)
+[Building](https://github.com/smart-data-models/dataModel.Building)
 などの標準データモデルが使用されていた場合、データは適切な形式でフォーマットされ、**Building**
 固有のアイコンが使用されます。
 
