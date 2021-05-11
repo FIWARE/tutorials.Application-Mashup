@@ -71,10 +71,10 @@ CREATE TABLE `auth_token` (
 LOCK TABLES `auth_token` WRITE;
 /*!40000 ALTER TABLE `auth_token` DISABLE KEYS */;
 INSERT INTO `auth_token` VALUES 
-('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa','2016-07-30 12:04:45',1,'aaaaaaaa-good-0000-0000-000000000000',NULL),
-('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb','2016-07-30 12:38:13',1,'bbbbbbbb-good-0000-0000-000000000000',NULL),
-('cccccccc-cccc-cccc-cccc-cccccccccccc','2016-07-31 09:36:13',1,'cccccccc-good-0000-0000-000000000000',NULL),
-('51f2e380-c959-4dee-a0af-380f730137c3','2016-07-30 13:02:37',1,'admin',NULL);
+('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa','2036-07-30 12:04:45',1,'aaaaaaaa-good-0000-0000-000000000000',NULL),
+('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb','2036-07-30 12:38:13',1,'bbbbbbbb-good-0000-0000-000000000000',NULL),
+('cccccccc-cccc-cccc-cccc-cccccccccccc','2036-07-31 09:36:13',1,'cccccccc-good-0000-0000-000000000000',NULL),
+('51f2e380-c959-4dee-a0af-380f730137c3','2036-07-30 13:02:37',1,'admin',NULL);
 /*!40000 ALTER TABLE `auth_token` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -102,8 +102,6 @@ CREATE TABLE `authzforce` (
 
 LOCK TABLES `authzforce` WRITE;
 /*!40000 ALTER TABLE `authzforce` DISABLE KEYS */;
-INSERT INTO `authzforce` VALUES 
-('NYP5CukQEei0BgJCrBIBDA','d72f7c1c-b250-431a-82c5-c3afe65a96e8',1,'tutorial-dckr-site-0000-xpresswebapp');
 /*!40000 ALTER TABLE `authzforce` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -171,6 +169,7 @@ CREATE TABLE `iot` (
 
 LOCK TABLES `iot` WRITE;
 /*!40000 ALTER TABLE `iot` DISABLE KEYS */;
+INSERT INTO `iot` VALUES ('iot_sensor_00000000-0000-0000-0000-000000000000','e9f7c64ec2895eec281f8fd36e588d1bc762bcca',NULL,'tutorial-dckr-site-0000-xpresswebapp');
 /*!40000 ALTER TABLE `iot` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -291,19 +290,20 @@ LOCK TABLES `oauth_client` WRITE;
 /*!40000 ALTER TABLE `oauth_client` DISABLE KEYS */;
 INSERT INTO `oauth_client` VALUES
 ('tutorial-dckr-site-0000-xpresswebapp','FIWARE Tutorial',
-  'FIWARE Application protected by OAuth2 and Keyrock','tutorial-dckr-site-0000-clientsecret',
+  'FIWARE Application protected by OAuth2 and Keyrock',  'tutorial-dckr-site-0000-clientsecret',
   'http://localhost:3000','http://localhost:3000/login',NULL,'default',
-  'authorization_code,implicit,password,client_credentials,refresh_token','code',NULL,NULL,NULL,'bearer', NULL),
-('tutorial-lcal-host-0000-xpresswebapp','localhost App',
-  'Localhost Callback protected by OAuth2 and Keyrock','tutorial-lcal-host-0000-clientsecret',
-  'http://localhost:3000','http://localhost:3000/login',NULL,'default',
-  'authorization_code,implicit,password,client_credentials,refresh_token','code',NULL,NULL,NULL,'bearer', NULL);
+  'authorization_code,implicit,password,client_credentials,refresh_token','code',NULL,NULL,NULL,'bearer,permanent', NULL),
+('trusted-dckr-app-0000-000000000000','Trusted Application',
+  'Second application protected by OAuth2 and Keyrock','trusted-dckr-app-0000-clientsecret',
+  '','',NULL,'default',
+  'password','code',NULL,NULL,NULL,'bearer', NULL);
 -- Wirecloud Application
 INSERT INTO `oauth_client` VALUES
 ('wirecloud-dckr-site-0000-00000000000','FIWARE Wirecloud',
   'FIWARE Wirecloud','wirecloud-docker-000000-clientsecret',
   'http://localhost:8000','http://localhost:8000/complete/fiware/',NULL,'default',
   'authorization_code','code',NULL,NULL,NULL,'bearer', NULL);
+
 /*!40000 ALTER TABLE `oauth_client` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -340,7 +340,7 @@ CREATE TABLE `oauth_refresh_token` (
 
 LOCK TABLES `oauth_refresh_token` WRITE;
 /*!40000 ALTER TABLE `oauth_refresh_token` DISABLE KEYS */;
-INSERT INTO `oauth_refresh_token` VALUES ('4eb1f99f80f37c81a8ef85d92eae836919887e1e','2018-08-13 11:14:21',NULL,'8ca60ce9-32f9-42d6-a013-a19b3af0c13d','admin',NULL,NULL,NULL);
+INSERT INTO `oauth_refresh_token` VALUES ('4eb1f99f80f37c81a8ef85d92eae836919887e1e','2018-08-13 11:14:21',NULL,'8ca60ce9-32f9-42d6-a013-a19b3af0c13d','admin',NULL, NULL,NULL);
 /*!40000 ALTER TABLE `oauth_refresh_token` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -469,7 +469,8 @@ INSERT INTO `permission` VALUES
 ('pricechg-stck-0000-0000-000000000000','Access Price Changes',NULL,0,'GET','/app/price-change',NULL,'tutorial-dckr-site-0000-xpresswebapp',0,NULL,0);
 -- Admin Permission for Wirecloud
 INSERT INTO `permission` VALUES 
-('wirecloud-admin-00-0000-000000000000','Wirecloud Admin',NULL,0,NULL,NULL,NULL,'wirecloud-dckr-site-0000-00000000000',0);
+('wirecloud-admin-00-0000-000000000000','Wirecloud Admin',NULL,0,NULL,NULL,NULL,'wirecloud-dckr-site-0000-00000000000',0,NULL,0);
+
 /*!40000 ALTER TABLE `permission` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -543,11 +544,9 @@ INSERT INTO `role_assignment` VALUES
 (1,NULL,'8ca60ce9-32f9-42d6-a013-a19b3af0c13d','provider',NULL,'96154659-cb3b-4d2d-afef-18d6aec0518e'),
 (2,'member','8ca60ce9-32f9-42d6-a013-a19b3af0c13d','provider','74f5299e-3247-468c-affb-957cda03f0c4',NULL),
 (3,NULL,'222eda27-958b-4f0c-a5cb-e4114fb170c3','provider',NULL,'admin'),
-(4,NULL,'222eda27-958b-4f0c-a5cb-e4114fb170c3','provider',NULL,'96154659-cb3b-4d2d-afef-18d6aec0518e');
--- Tutorial App Roles
-INSERT INTO `role_assignment` VALUES 
+(4,NULL,'222eda27-958b-4f0c-a5cb-e4114fb170c3','provider',NULL,'96154659-cb3b-4d2d-afef-18d6aec0518e'),
 (5,NULL,'tutorial-dckr-site-0000-xpresswebapp','provider',NULL,'aaaaaaaa-good-0000-0000-000000000000'),
-(6,NULL,'tutorial-lcal-host-0000-xpresswebapp','provider',NULL,'aaaaaaaa-good-0000-0000-000000000000'),
+(6,NULL,'trusted-dckr-app-0000-000000000000','provider',NULL,'aaaaaaaa-good-0000-0000-000000000000'),
 (10,NULL,'tutorial-dckr-site-0000-xpresswebapp','security-role-0000-0000-000000000000',NULL,'cccccccc-good-0000-0000-000000000000'),
 (11,'member','tutorial-dckr-site-0000-xpresswebapp','security-role-0000-0000-000000000000','security-team-0000-0000-000000000000',NULL),
 (12,NULL,'tutorial-dckr-site-0000-xpresswebapp','managers-role-0000-0000-000000000000',NULL,'bbbbbbbb-good-0000-0000-000000000000'),
@@ -576,7 +575,7 @@ CREATE TABLE `role_permission` (
   KEY `permission_id` (`permission_id`),
   CONSTRAINT `role_permission_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`) ON DELETE CASCADE,
   CONSTRAINT `role_permission_ibfk_2` FOREIGN KEY (`permission_id`) REFERENCES `permission` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -592,7 +591,9 @@ INSERT INTO `role_permission` VALUES
 (9,'security-role-0000-0000-000000000000','entrance-open-0000-0000-000000000000'),
 (10,'managers-role-0000-0000-000000000000','alrmbell-ring-0000-0000-000000000000'),
 (11,'managers-role-0000-0000-000000000000','increase-stck-0000-0000-000000000000'),
-(12,'managers-role-0000-0000-000000000000','pricechg-stck-0000-0000-000000000000'),
+(12,'managers-role-0000-0000-000000000000','pricechg-stck-0000-0000-000000000000');
+-- Wirecloud Role Permissions
+INSERT INTO `role_permission` VALUES
 (13,'admin000-role-0000-0000-wirecloud000','wirecloud-admin-00-0000-000000000000');
 
 
@@ -762,6 +763,7 @@ CREATE TABLE `user_registration_profile` (
   `verification_key` varchar(255) DEFAULT NULL,
   `verification_expires` datetime DEFAULT NULL,
   `user_email` varchar(255) DEFAULT NULL,
+  `disable_2fa_expires` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_email` (`user_email`),
   CONSTRAINT `user_registration_profile_ibfk_1` FOREIGN KEY (`user_email`) REFERENCES `user` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
