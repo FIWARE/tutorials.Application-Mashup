@@ -123,7 +123,7 @@ startContainers () {
 
 stoppingContainers () {
 	echo "Stopping running containers"
-	docker-compose  -p fiware down -v --remove-orphans
+	docker-compose   down -v --remove-orphans
 }
 
 command="$1"
