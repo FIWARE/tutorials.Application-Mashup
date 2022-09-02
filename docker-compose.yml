@@ -14,7 +14,6 @@ services:
     restart: always
     depends_on:
       - keyrock
-      - elasticsearch
       - memcached
       - postgres-db
     environment:
@@ -23,7 +22,7 @@ services:
       - DB_HOST=postgres-db
       - DB_PASSWORD=wirepass   # Change this password!
       - FORWARDED_ALLOW_IPS=*
-      - ELASTICSEARCH2_URL=http://elasticsearch:9200/
+      # - ELASTICSEARCH2_URL=http://elasticsearch:9200/
       - MEMCACHED_LOCATION=memcached:11211
       - FIWARE_IDM_PUBLIC_URL=http://localhost:${KEYROCK_PORT}
       - FIWARE_IDM_SERVER=http://172.18.1.5:${KEYROCK_PORT}
@@ -237,21 +236,6 @@ services:
       - PORT=8100
       - TRUST_PROXY_HEADERS=0
 
-  elasticsearch:
-    image: elasticsearch:2.4
-    container_name: wc-elasticsearch
-    hostname: elasticsearch
-    ports:
-      - "9200:9200"
-    networks:
-      default:
-        ipv4_address: 172.18.1.12
-
-    restart: always
-    volumes:
-      - elasticsearch-data:/usr/share/elasticsearch/data
-    command: elasticsearch -Des.index.max_result_window=50000
-
   memcached:
     image: memcached:1
     container_name: wc-memcached
@@ -277,7 +261,6 @@ networks:
 volumes:
   mysql-db: ~
   postgres-db: ~
-  elasticsearch-data: ~
   wirecloud-static: ~
   wirecloud-data: ~
   mongo-db: ~
