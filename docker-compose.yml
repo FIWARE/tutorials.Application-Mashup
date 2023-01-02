@@ -34,7 +34,7 @@ services:
             - wirecloud-static:/var/www/static
   
     keyrock:
-        image: keyrock #fiware/idm:${KEYROCK_VERSION}
+        image: fiware/idm:${KEYROCK_VERSION}
         container_name: fiware-keyrock
         hostname: keyrock
         networks:
