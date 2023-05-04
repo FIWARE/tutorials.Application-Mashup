@@ -179,7 +179,7 @@ The specific architecture of each section of the tutorial is discussed below.
 ## Wirecloud Configuration
 
 ```yaml
-image: fiware/wirecloud
+image: quay.io/fiware/wirecloud
         container_name: fiware-wirecloud
         hostname: wirecloud
         ports:

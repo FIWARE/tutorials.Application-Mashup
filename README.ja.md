@@ -191,7 +191,7 @@ WireCloud の全体的な目的は、プログラミングの知識がなくて�
 ## WireCloud 設定
 
 ```yaml
-image: fiware/wirecloud
+image: quay.io/fiware/wirecloud
         container_name: fiware-wirecloud
         hostname: wirecloud
         ports:
