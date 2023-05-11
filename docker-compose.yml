@@ -2,6 +2,8 @@ version: "3.8"
 
 services:
   wirecloud:
+    labels:
+      org.fiware: 'tutorial'
     image: quay.io/fiware/wirecloud:${WIRECLOUD_VERSION}
     container_name: fiware-wirecloud
     hostname: wirecloud
@@ -163,6 +165,8 @@ services:
   # Databases
   postgres-db:
     image: postgres
+    labels:
+      org.fiware: 'tutorial'
     hostname: postgres-db
     container_name: db-postgres
     restart: always
@@ -223,6 +227,8 @@ services:
 
   ngsi-proxy:
     image: quay.io/fiware/ngsiproxy:1.2.0
+    labels:
+      org.fiware: 'tutorial'
     hostname: ngsi-proxy
     container_name: wc-ngsi-proxy
     networks:
@@ -238,6 +244,8 @@ services:
 
   memcached:
     image: memcached:1
+    labels:
+      org.fiware: 'tutorial'
     container_name: wc-memcached
     hostname: memcached
     ports:
