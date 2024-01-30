@@ -69,6 +69,7 @@ services:
       org.fiware: 'tutorial'
     image: quay.io/fiware/orion:${ORION_VERSION}
     container_name: fiware-orion
+    hostname: orion
     depends_on:
       - mongo-db
     networks:
