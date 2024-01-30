@@ -121,12 +121,9 @@ services:
     hostname: iot-sensors
     container_name: fiware-tutorial
     depends_on:
-      orion :
-        condition: service_started
-      iot-agent :
-        condition: service_started
-      keyrock :
-        condition: service_started
+      - orion-v2
+      - iot-agent
+      - keyrock
     networks:
       default:
         ipv4_address: 172.18.1.7
