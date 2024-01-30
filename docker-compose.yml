@@ -90,7 +90,7 @@ services:
     container_name: fiware-iot-agent
     depends_on:
       - mongo-db
-      - orion
+      - orion-v2
     networks:
       - default
     ports:
