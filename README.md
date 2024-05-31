@@ -1,5 +1,9 @@
-[![FIWARE Banner](https://fiware.github.io/tutorials.Application-Mashup/img/fiware.png)](https://www.fiware.org/developers)
-[![NGSI v2](https://img.shields.io/badge/NGSI-v2-5dc0cf.svg)](https://fiware-ges.github.io/orion/api/v2/stable/)
+<h1  align="center">
+    <img src="https://fiware.github.io/tutorials.Step-by-Step/img/fiware-supermarket.png" />
+    <img src="https://img.shields.io/badge/NGSI-v2-5dc0cf.svg" width="90"/>
+</h1>
+
+## Application Mashup
 
 [![FIWARE Visualization](https://nexus.lab.fiware.org/repository/raw/public/badges/chapters/visualization.svg)](https://www.fiware.org/developers/catalogue/)
 [![License: MIT](https://img.shields.io/github/license/fiware/tutorials.Application-Mashup.svg)](https://opensource.org/licenses/MIT)
