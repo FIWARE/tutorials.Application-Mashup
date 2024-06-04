@@ -28,7 +28,7 @@ Generic Enabler の視覚化ツールです。このチュートリアルでは�
 -   [マッシュアップを使った NGSI データの視覚化](#visualizing-ngsi-data-using-a-mashup)
 -   [前提条件](#prerequisites)
     -   [Docker](#docker)
-    -   [Cygwin](#cygwin)
+    -   [WSL](#wsl)
 -   [アーキテクチャ](#architecture)
     -   [WireCloud 設定](#wirecloud-configuration)
 -   [起動](#start-up)
@@ -117,12 +117,10 @@ WireCloud の全体的な目的は、プログラミングの知識がなくて�
 できることを意味します。Docker Compose は、Docker for Windows および Docker for Mac の一部としてデフォルトでインストール
 されますが、Linux ユーザは[こちら](https://docs.docker.com/compose/install/)にある手順に従う必要があります。
 
-<a name="cygwin"></a>
-
-## Cygwin
+## WSL
 
 簡単な bash スクリプトを使ってサービスを開始します。Windows ユーザは、Windows 上の Linux ディストリビューションに
-似たコマンドライン機能を提供するために [cygwin](http://www.cygwin.com/) をダウンロードするべきです。
+似たコマンドライン機能を提供するために [を使用して Windows に Linux をインストールする方法](https://learn.microsoft.com/ja-jp/windows/wsl/install) をダウンロードするべきです。
 
 <a name="architecture"></a>
 
