@@ -246,8 +246,7 @@ git checkout NGSI-v2
 ./services create
 ```
 
-> [!NOTE]
-> The initial creation of Docker images can take up to three minutes
+> [!NOTE] The initial creation of Docker images can take up to three minutes
 
 Thereafter, all services can be initialized from the command-line by running the
 [services](https://github.com/FIWARE/tutorials.Application-Mashup/blob/NGSI-v2/services) Bash script provided within the
@@ -260,6 +259,7 @@ repository:
 Then go to your browser and open **Wirecloud** using the URL: `http://localhost:8000/`
 
 > [!NOTE]
+>
 > If you want to clean up and start over again you can do so with the following command:
 >
 > ```console
@@ -275,8 +275,9 @@ page and sign in to **Keyrock** using `alice-the-admin@test.com` with the passwo
 ![](https://fiware.github.io/tutorials.Application-Mashup/img/login.png)
 
 > [!NOTE]
->  If you want to see how Alice has been authorized to use **Wirecloud**, you can Log in to **Keyrock** itself,
-> and look at Alice's applications (`http://localhost:3005/idm/applications`)
+>
+> If you want to see how Alice has been authorized to use **Wirecloud**, you can Log in to **Keyrock** itself, and look
+> at Alice's applications (`http://localhost:3005/idm/applications`)
 >
 > The **Wirecloud** application is set up as follows:
 >
@@ -388,6 +389,7 @@ the NGSI Browser
 Clicking on the **+** button will add an unconfigured NGSI Browser on screen
 
 > [!NOTE]
+>
 > The widget can be removed by clicking on the **x** at the top right of the window
 
 The next step is to configure the widget. Click on the wiring button to switch to the wiring view, and select
