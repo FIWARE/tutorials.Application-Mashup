@@ -27,8 +27,8 @@ git checkout NGSI-v2
 ./services start
 ```
 
-| [![NGSI v2](https://img.shields.io/badge/NGSI-v2-5dc0cf.svg)](https://fiware-ges.github.io/orion/api/v2/stable/) | :books: [Documentation](https://github.com/FIWARE/tutorials.Application-Mashup/tree/NGSI-v2) |
-| --- | --- |
+| [![NGSI v2](https://img.shields.io/badge/NGSI-v2-5dc0cf.svg)](https://fiware-ges.github.io/orion/api/v2/stable/) | :books: [Documentation](https://github.com/FIWARE/tutorials.Application-Mashup/tree/NGSI-v2) | ![](https://img.shields.io/github/last-commit/fiware/tutorials.Application-Mashup/NGSI-v2)
+| --- | --- | --- |
 
 ---
 
