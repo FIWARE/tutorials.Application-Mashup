@@ -7,7 +7,7 @@
 
 ## Application Mashup
 
-[![FIWARE Visualization](https://nexus.lab.fiware.org/repository/raw/public/badges/chapters/visualization.svg)](https://www.fiware.org/developers/catalogue/)
+[![FIWARE Visualization](https://fiware.github.io/catalogue/badges/chapters/visualization.svg)](https://www.fiware.org/developers/catalogue/)
 [![License: MIT](https://img.shields.io/github/license/fiware/tutorials.Application-Mashup.svg)](https://opensource.org/licenses/MIT)
 [![Support badge](https://img.shields.io/badge/tag-fiware-orange.svg?logo=stackoverflow)](https://stackoverflow.com/questions/tagged/fiware-wirecloud)
 <br/> [![Documentation](https://img.shields.io/readthedocs/fiware-tutorials.svg)](https://fiware-tutorials.rtfd.io)
