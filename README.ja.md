@@ -136,7 +136,7 @@ WireCloud の全体的な目的は、プログラミングの知識がなくて�
 **WireCloud** のユーザは、標準の [ID 管理](https://github.com/FIWARE/tutorials.Identity-Management/)コンポーネントの
 **Keyrock** を使用して作成されています。全体としてシステムは4つの FIWARE コンポーネントを利用します -
 [Orion Context Broker](https://fiware-orion.readthedocs.io/en/latest/),
-[IoT Agent for UltraLight 2.0](https://fiware-iotagent-ul.readthedocs.io/en/latest/),
+[IoT Agent for JSON](https://fiware-iotagent-json.readthedocs.io/en/latest/),
 [Keyrock](https://fiware-idm.readthedocs.io/en/latest/) ID 管理 および新しく統合された
 [WireCloud](https://wirecloud.readthedocs.io/en/stable/) アプリケーション・マッシュアップ・ツールです。
 アプリケーションが _"Powered by FIWARE"_ の資格を得るには、Orion Context Broker の使用で十分です。
@@ -146,8 +146,8 @@ WireCloud の全体的な目的は、プログラミングの知識がなくて�
 -   [NGSI-v2](https://fiware.github.io/specifications/OpenAPI/ngsiv2) を使用してリクエストを受信する
     FIWARE [Orion Context Broker](https://fiware-orion.readthedocs.io/en/latest/)
 -   [NGSI](https://fiware.github.io/) を使用してサウスバウンドのリクエストを受信し、それらをデバイス用の
-    [UltraLight 2.0](https://fiware-iotagent-ul.readthedocs.io/en/latest/usermanual/index.html#user-programmers-manual)
-    コマンドに変換する FIWARE [IoT Agent for UltraLight 2.0](https://fiware-iotagent-ul.readthedocs.io/en/latest/)
+    [JSON](https://fiware-iotagent-json.readthedocs.io/en/latest/usermanual/index.html#user-programmers-manual)
+    コマンドに変換する FIWARE [IoT Agent for JSON](https://fiware-iotagent-json.readthedocs.io/en/latest/)
 -   FIWARE [Keyrock](https://fiware-idm.readthedocs.io/en/latest/) ID 管理システム
     -   **在庫管理システム**と **WireCloud** の両方で使用
 -   NGSIエンティティを表示するための FIWARE [WireCloud](https://wirecloud.readthedocs.io/en/stable/) アプリケーション・
@@ -168,7 +168,7 @@ WireCloud の全体的な目的は、プログラミングの知識がなくて�
     - 各店舗で購入できる商品を表示します
     - ユーザが製品を "購入" し、在庫数を減らすことができます
 -   HTTP 経由で実行されている
-    [UltraLight 2.0](https://fiware-iotagent-ul.readthedocs.io/en/latest/usermanual/index.html#user-programmers-manual)
+    [JSON](https://fiware-iotagent-json.readthedocs.io/en/latest/usermanual/index.html#user-programmers-manual)
     プロトコルを使用する [ダミー IoT デバイス](https://github.com/FIWARE/tutorials.IoT-Sensors/tree/NGSI-v2)のセットとして機能する
     Web サーバです - 特定のリソースへのアクセスが制限されています
 -  **WireCloud** では、3つの追加マイクロサービスが使用されています :
